@@ -1,7 +1,7 @@
-import ClassAffinityType from './enums/ClassAffinityType.js';
-import RoleAffinityType from './enums/RoleAffinityType.js';
-import SubRoleAffinityType from './enums/SubRoleAffinityType.js';
-import OtherAffinityType from './enums/OtherAffinityType.js';
+import {ClassAffinityType} from './enums/ClassAffinityType.js';
+import {RoleAffinityType} from './enums/RoleAffinityType.js';
+import {SubRoleAffinityType} from './enums/SubRoleAffinityType.js';
+import {OtherAffinityType} from './enums/OtherAffinityType.js';
 
 function Character() {
 
