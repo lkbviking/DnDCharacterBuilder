@@ -1,25 +1,26 @@
 import { ClassAffinityType, RoleAffinityType, SubRoleAffinityType, OtherAffinityType } from './question.js';
 function Character() {
 
-    let  affinityValues = {}
+    this.affinityValues = {}
 
     Object.keys(ClassAffinityType).forEach((key) => {
-        affinityValues[ClassAffinityType[key]] = 0;
+        this.affinityValues[ClassAffinityType[key]] = 0;
     });
 
     Object.keys(RoleAffinityType).forEach((key) => {
-        affinityValues[RoleAffinityType[key]] = 0;
+        this.affinityValues[RoleAffinityType[key]] = 0;
     });
 
     Object.keys(SubRoleAffinityType).forEach((key) => {
-        affinityValues[SubRoleAffinityType[key]] = 0;
+        this.affinityValues[SubRoleAffinityType[key]] = 0;
     });
 
     Object.keys(OtherAffinityType).forEach((key) => {
-        affinityValues[OtherAffinityType[key]] = 0;
+        this.affinityValues[OtherAffinityType[key]] = 0;
     });
 
 }
 
 
-console.log(new Character());
+char1 = new Character();
+console.log(char1.affinityValues); // {artificer: 0, barbarian: 0, bard: 0, bloodHunter: 0, cleric: 0, druid: 0, fighter: 0, monk: 0, paladin: 0, ranger: 0, rogue: 0, sorcerer: 0, warlock: 0, wizard: 0, tank: 0, melee: 0, ranged: 0, caster: 0, support: 0, subtank: 0, submelee: 0, subranged: 0, subcaster: 0, subsupport: 0, singleClass: 0}
