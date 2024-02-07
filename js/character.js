@@ -1,4 +1,8 @@
-import { ClassAffinityType, RoleAffinityType, SubRoleAffinityType, OtherAffinityType } from './question.js';
+import ClassAffinityType from './enums/ClassAffinityType';
+import RoleAffinityType from './enums/RoleAffinityType';
+import SubRoleAffinityType from './enums/SubRoleAffinityType';
+import OtherAffinityType from './enums/OtherAffinityType';
+
 function Character() {
 
     this.affinityValues = {}
