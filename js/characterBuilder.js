@@ -14,6 +14,8 @@ function displayNextQuestion() {
             console.log(selectedOption);
             displayNextQuestion();
         }
+    } else {
+        document.getElementById('container').innerHTML = new Character().getCharacterHTML();
     }
 }
 
