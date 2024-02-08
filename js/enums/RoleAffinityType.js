@@ -1,7 +1,7 @@
 export const RoleAffinityType = {
-    TANK: 'tank',
-    MELEE: 'melee',
-    RANGED: 'ranged',
-    CASTER: 'caster',
-    SUPPORT: 'support'
+    TANK: 'Tank',
+    MELEE: 'Melee DPS',
+    RANGED: 'Ranged DPS',
+    CASTER: 'Caster DPS',
+    SUPPORT: 'Support'
 };

@@ -16,6 +16,8 @@ export function Question(questionType, question, options, affinities) {
             case QuestionType.TRUE_FALSE:
                 this.options = ['True', 'False'];
                 return this.getMultipleChoiceHTML();
+            case QuestionType.NUMERICAL:
+                return this.getNumericalHTML();
         }
     }
 
@@ -24,6 +26,7 @@ export function Question(questionType, question, options, affinities) {
         this.options.forEach((option, index) => {
             html += '<div class="option"><input type="radio" name="option" value="' + affinities[index] + '">' + option + '</div>';
         });
+        html += '<button id="submit">Submit</button>';
         return html;
     }
 
@@ -32,6 +35,16 @@ export function Question(questionType, question, options, affinities) {
         this.options.forEach((option, index) => {
             html += '<div class="option"><input type="checkbox" name="option" value="' + affinities[index] + '">' + option + '</div>';
         });
+        html += '<button id="submit">Submit</button>';
+        return html;
+    }
+
+    this.getNumericalHTML = function() {
+        let html = '<div class="question">' + this.question + '</div>';
+        for(let i = 0; i <= 10; i++) {
+            html += '<div class="option"><input type="radio" name="option" value="' + i + '">' + i + '</div>';
+        }
+        html += '<button id="submit">Submit</button>';
         return html;
     }
 
