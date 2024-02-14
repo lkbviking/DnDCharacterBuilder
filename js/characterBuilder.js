@@ -1,5 +1,5 @@
-import { Character } from "./character.js";
-import { questionList } from "./questionList.js";
+import { Character } from "./Character.js";
+import { questionList } from "./Metadata/questionList.js";
 
 
 

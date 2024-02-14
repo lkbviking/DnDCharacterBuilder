@@ -1,4 +1,4 @@
-import { QuestionType } from './enums/QuestionType.js';
+import { QuestionType } from './Metadata/QuestionType.js';
 export function Question(questionType, question, options, affinities) {
     this.question = question;
     this.questionType = questionType;
