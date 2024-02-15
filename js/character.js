@@ -1,5 +1,5 @@
 import { Affinities } from './Metadata/Affinities.js';
-
+//test
 export function Character() {
 
     this.affinities = new Affinities();
