@@ -8,14 +8,14 @@ export class Affinities {
     }
     
     addAffinityVectors(...affinityVectors) {
+        let affinityData = this.data;
         affinityVectors.forEach((affinityVector) => {
-            if (this.data[affinityVector.type] === undefined) {
-                this.data[affinityVector.type] = affinityVector;
+            if (affinityData[affinityVector.type] === undefined) {
+                affinityData[affinityVector.type] = affinityVector;
                 return;
             }
-            this.data[affinityVector.type].addVector(affinityVector);
+            affinityData[affinityVector.type].addVector(affinityVector);
         });
-       
     };
 
     addAffinityVectorArray(affinityVectorArray) {
