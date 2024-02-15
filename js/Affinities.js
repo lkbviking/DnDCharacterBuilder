@@ -9,10 +9,18 @@ export class Affinities {
     
     addAffinityVectors(...affinityVectors) {
         affinityVectors.forEach((affinityVector) => {
-            this.data[affinityVector.type] = affinityVector.add(this.data[affinityVector.type]);
+            if (this.data[affinityVector.type] === undefined) {
+                this.data[affinityVector.type] = affinityVector;
+                return;
+            }
+            this.data[affinityVector.type].addVector(affinityVector);
         });
        
     };
+
+    addAffinityVectorArray(affinityVectorArray) {
+        this.addAffinityVectors(...affinityVectorArray);
+    }
 
 
 

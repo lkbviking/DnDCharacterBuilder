@@ -21,7 +21,7 @@ function submitAndDisplayNextQuestion() {
     document.querySelectorAll('input[name="option"]:checked').forEach((option) => {
         selectedOptions.add(option.value);
     });
-    myCharacter.affinities.addAffinityVectors(questionList[currentQuestion].getAffinityVectors(selectedOptions));
+    myCharacter.affinities.addAffinityVectorArray(questionList[currentQuestion].getAffinityVectors(selectedOptions));
     displayNextQuestion();
 }
 

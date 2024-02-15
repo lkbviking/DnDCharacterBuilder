@@ -1,10 +1,11 @@
 import { Affinities } from './Affinities.js';
 
-export function Character() {
+export class Character {
+    constructor() {
+        this.affinities = new Affinities();
+    }
 
-    this.affinities = new Affinities();
-
-    this.getCharacterHTML = function() {
+    getCharacterHTML() {
         let html = '<div class="character">';
         html += '<h1>You should... be a Bard!</h1>';
         html += '<h1>Be a Bard!</h1>';
@@ -35,6 +36,5 @@ export function Character() {
         html += '</div>';
         html += '</div>';
         return html;
-    }
-
+    };
 }

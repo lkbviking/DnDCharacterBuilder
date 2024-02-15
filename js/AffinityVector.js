@@ -18,6 +18,10 @@ export class AffinityVector {
         this.polarization += polarization;
     };
 
+    addVector(affinityVector) {
+        this.add(affinityVector.magnitude, affinityVector.polarization);
+    }
+
     getAffinityHTML() {
         return '<div class="affinity">' + this.type + ': ' + this.magnitude + '</div>';
     }
