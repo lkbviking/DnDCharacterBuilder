@@ -1,20 +1,31 @@
 /* FILEPATH: /d:/VS Code Programs/DnDCharacterBuilder/DnDCharacterBuilder/css/style.css */
+body {
+    font-family: Arial, sans-serif;
+    /* background-color: #f4f4f4; */
+    font-size: xx-large;
+}
 
-.container {
-  width: 300px;
-  height: 200px;
-  background-color: #ccc;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
+
+
+#container {
+    width: 80%;
+    margin: 5% auto;
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.question {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
 }
 
 .option {
-  margin: 10px;
+    margin: 5%;
 }
+    
 
 .option input[type="radio"] {
     /* Makes radio buttons look nicer*/
@@ -28,3 +39,56 @@
     transition: 0.2s all linear;
     cursor: pointer;
 }
+
+.option input[type="radio"]:checked {
+    background-color: #000;
+}
+
+.option input[type="radio"]:hover {
+    transform: scale(1.1);
+}
+
+.option input[type="checkbox"] {
+    /* Makes checkboxes look nicer*/
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 2px solid #000;
+    transition: 0.2s all linear;
+    cursor: pointer;
+}
+
+.option input[type="checkbox"]:checked {
+    background-color: #000;
+}
+
+.option input[type="checkbox"]:hover {
+    transform: scale(1.1);
+}
+
+#submit {
+    margin: 5%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s all linear;
+}
+
+#submit:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+#submit:active {
+    transform: scale(0.9);
+}
+
+#submit:focus {
+    outline: none;
+}
+
