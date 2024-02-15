@@ -1,0 +1,30 @@
+/* FILEPATH: /d:/VS Code Programs/DnDCharacterBuilder/DnDCharacterBuilder/css/style.css */
+
+.container {
+  width: 300px;
+  height: 200px;
+  background-color: #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.option {
+  margin: 10px;
+}
+
+.option input[type="radio"] {
+    /* Makes radio buttons look nicer*/
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    transition: 0.2s all linear;
+    cursor: pointer;
+}
