@@ -30,8 +30,8 @@ export class Character {
         html += '<div></div>';
         html += '<h1>Nerd Stats:</h1>';
         html += '<div class="affinity-values">';
-        Object.keys(this.affinities).forEach((key) => {
-            html += '<div class="affinity-value">' + key + ': ' + this.affinities[key] + '</div>';
+        Object.keys(this.affinities.data).forEach((key) => {
+            html += '<div class="affinity-value">' + key + ': ' + this.affinities.data[key] + '</div>';
         });
         html += '</div>';
         html += '</div>';
