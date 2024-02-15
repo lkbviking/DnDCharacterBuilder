@@ -53,7 +53,7 @@ export class Question {
         let affinityVectors = [];
         this.answers.forEach((answer) => {
             if (selectedOptions.has(answer.text)) {
-                affinityVectors.push(answer.affinityVectors);
+                affinityVectors.push(...answer.affinityVectors);
             }
         });
         return affinityVectors;
