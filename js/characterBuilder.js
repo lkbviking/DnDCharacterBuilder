@@ -1,4 +1,4 @@
-import { Character } from "./Character.js";
+import { Character } from "./Character2.js";
 import { questionList } from "./Metadata/questionList.js";
 
 
