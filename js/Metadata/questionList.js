@@ -1,28 +1,28 @@
 import { Question } from '../Question.js';
 import { QuestionType } from './QuestionType.js';
-import { Affinities } from '../Affinities.js';
+import { AffinityVector } from '../AffinityVector.js';
+import { Answer } from '../Answer.js';
+
 export let questionList = [];
 
 questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE_CHECKBOXES,
         'What classes are you interested in playing? (check all that apply)',
-        [
-            'Artificer', 
-            'Barbarian', 
-            'Bard', 
-            'Blood Hunter', 
-            'Cleric', 
-            'Druid', 
-            'Fighter', 
-            'Monk', 
-            'Paladin', 
-            'Ranger', 
-            'Rogue', 
-            'Sorcerer', 
-            'Warlock', 
-            'Wizard'
-        ],
+        new Answer('Artificer', new AffinityVector('ARTIFICER', 1, 1)),
+        new Answer('Barbarian', new AffinityVector('BARBARIAN', 1, 1)),
+        new Answer('Bard', new AffinityVector('BARD', 1, 1)),
+        new Answer('Blood Hunter', new AffinityVector('BLOOD_HUNTER', 1, 1)),
+        new Answer('Cleric', new AffinityVector('CLERIC', 1, 1)),
+        new Answer('Druid', new AffinityVector('DRUID', 1, 1)),
+        new Answer('Fighter', new AffinityVector('FIGHTER', 1, 1)),
+        new Answer('Monk', new AffinityVector('MONK', 1, 1)),
+        new Answer('Paladin', new AffinityVector('PALADIN', 1, 1)),
+        new Answer('Ranger', new AffinityVector('RANGER', 1, 1)),
+        new Answer('Rogue', new AffinityVector('ROGUE', 1, 1)),
+        new Answer('Sorcerer', new AffinityVector('SORCERER', 1, 1)),
+        new Answer('Warlock', new AffinityVector('WARLOCK', 1, 1)),
+        new Answer('Wizard', new AffinityVector('WIZARD', 1, 1))
     )
 );
 

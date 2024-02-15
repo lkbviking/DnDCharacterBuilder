@@ -10,7 +10,7 @@ function displayNextQuestion() {
     currentQuestion++;
     if(currentQuestion < questionList.length) {
         document.getElementById('container').innerHTML = questionList[currentQuestion].getQuestionHTML();
-        document.getElementById("submit").onclick = submitAndDisplayNextQuestion();
+        document.getElementById("submit").onclick = submitAndDisplayNextQuestion;
     } else {
         document.getElementById('container').innerHTML = myCharacter.getCharacterHTML();
     }
