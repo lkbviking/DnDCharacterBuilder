@@ -1,6 +1,6 @@
 import { Question } from '../Question.js';
 import { QuestionType } from './QuestionType.js';
-import { affinities } from '../Affinities.js';
+import { Affinities } from '../Affinities.js';
 export let questionList = [];
 
 questionList.push(
