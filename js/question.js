@@ -1,13 +1,13 @@
 import { QuestionType } from './Metadata/QuestionType.js';
-export function Question(questionType, question, options, affinities) {
-    this.question = question;
-    this.questionType = questionType;
-    this.options = options;
-
-
-    this.previousQuestion = null;
-
-    this.getQuestionHTML = function() {
+import { Affinities } from './Affinities.js';
+export class Question {
+    constructor(questionType, question, ...answers) {
+        this.questionType = questionType;
+        this.question = question;
+        this.answers = answers;
+    }
+    
+    getQuestionHTML() {
         switch (this.questionType) {
             case QuestionType.MULTIPLE_CHOICE:
                 return this.getMultipleChoiceHTML();
@@ -19,33 +19,43 @@ export function Question(questionType, question, options, affinities) {
             case QuestionType.NUMERICAL:
                 return this.getNumericalHTML();
         }
-    }
+    };
 
-    this.getMultipleChoiceHTML = function() {
+    getMultipleChoiceHTML() {
         let html = '<div class="question">' + this.question + '</div>';
-        this.options.forEach((option, index) => {
-            html += '<div class="option"><input type="radio" name="option" value="' + affinities[index] + '">' + option + '</div>';
+        this.answers.forEach((answer) => {
+            html += '<div class="option"><input type="radio" name="option" value="' + answer.text + '">' + answer.text + '</div>';
         });
         html += '<button id="submit">Submit</button>';
         return html;
-    }
+    };
 
-    this.getMultipleChoiceCheckboxesHTML = function() {
+
+    getMultipleChoiceCheckboxesHTML() {
         let html = '<div class="question">' + this.question + '</div>';
-        this.options.forEach((option, index) => {
-            html += '<div class="option"><input type="checkbox" name="option" value="' + affinities[index] + '">' + option + '</div>';
+        this.answers.forEach((answer) => {
+            html += '<div class="option"><input type="checkbox" name="option" value="' + answer.text + '">' + answer.text + '</div>';
         });
         html += '<button id="submit">Submit</button>';
         return html;
-    }
+    };
 
-    this.getNumericalHTML = function() {
+    getNumericalHTML() {
         let html = '<div class="question">' + this.question + '</div>';
-        for(let i = 0; i <= 10; i++) {
+        for (let i = 0; i <= 10; i++) {
             html += '<div class="option"><input type="radio" name="option" value="' + i + '">' + i + '</div>';
         }
         html += '<button id="submit">Submit</button>';
         return html;
-    }
+    };
 
+    getAffinityVectors(selectedOptions) {
+        let affinityVectors = [];
+        this.answers.forEach((answer) => {
+            if (selectedOptions.has(answer.text)) {
+                affinityVectors.push(answer.affinityVectors);
+            }
+        });
+        return affinityVectors;
+    };
 }

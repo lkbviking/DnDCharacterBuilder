@@ -4,27 +4,27 @@ import { questionList } from "./Metadata/questionList.js";
 
 
 let currentQuestion = -1;
+let myCharacter = new Character();
 
 function displayNextQuestion() {
     currentQuestion++;
     if(currentQuestion < questionList.length) {
         document.getElementById('container').innerHTML = questionList[currentQuestion].getQuestionHTML();
-        document.getElementById("submit").onclick = function() {
-            let selectedOption = document.querySelector('input[name="option"]:checked').value;
-            console.log(selectedOption);
-            displayNextQuestion();
-        }
+        document.getElementById("submit").onclick = submitAndDisplayNextQuestion();
     } else {
-        document.getElementById('container').innerHTML = new Character().getCharacterHTML();
+        document.getElementById('container').innerHTML = myCharacter.getCharacterHTML();
     }
 }
 
-
-
-
-
+function submitAndDisplayNextQuestion() {
+    let selectedOptions = new Set();
+    document.querySelectorAll('input[name="option"]:checked').forEach((option) => {
+        selectedOptions.add(option.value);
+    });
+    myCharacter.affinities.addAffinityVectors(questionList[currentQuestion].getAffinityVectors(selectedOptions));
+    displayNextQuestion();
+}
 
 
 displayNextQuestion();
-
-console.log(new Character().affinityValues);
+console.log(myCharacter.affinities);

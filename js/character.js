@@ -1,12 +1,8 @@
-import { affinities } from './Metadata/affinities.js';
+import { Affinities } from './Metadata/Affinities.js';
 
 export function Character() {
 
-    this.affinityValues = {}
-
-    Object.keys(affinities).forEach((key) => {
-        this.affinityValues[affinities[key]] = 0;
-    });
+    this.affinities = new Affinities();
 
     this.getCharacterHTML = function() {
         let html = '<div class="character">';
@@ -33,8 +29,8 @@ export function Character() {
         html += '<div></div>';
         html += '<h1>Nerd Stats:</h1>';
         html += '<div class="affinity-values">';
-        Object.keys(this.affinityValues).forEach((key) => {
-            html += '<div class="affinity-value">' + key + ': ' + this.affinityValues[key] + '</div>';
+        Object.keys(this.affinities).forEach((key) => {
+            html += '<div class="affinity-value">' + key + ': ' + this.affinities[key] + '</div>';
         });
         html += '</div>';
         html += '</div>';
