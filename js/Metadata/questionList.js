@@ -30,36 +30,32 @@ questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
         'Which type of roll would you PRIMARILY like to play?',
-        [
-            'Tank', 
-            'Melee DPS', 
-            'Ranged DPS', 
-            'Caster DPS', 
-            'Support'
-        ],
-        )
+        new Answer('Tank', new AffinityVector('TANK', 1, 1)),
+        new Answer('Melee DPS', new AffinityVector('MELEE_DPS', 1, 1)),
+        new Answer('Ranged DPS', new AffinityVector('RANGED_DPS', 1, 1)),
+        new Answer('Caster DPS', new AffinityVector('CASTER_DPS', 1, 1)),
+        new Answer('Support', new AffinityVector('SUPPORT', 1, 1))
+    )
 );
 
 questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
         'What best describes your SECONDARY priority?',
-        [
-            'I would like to not die.', 
-            'I would like to smack my enemies around.', 
-            'Bows/crossbows/guns are cool.', 
-            'Optimally I can still throw fireballs at people.', 
-            'I would like to help my friends.'
-        ],
-        )
+        new Answer('I would like to not die.', new AffinityVector()),
+        new Answer('I would like to smack my enemies around.', new AffinityVector()),
+        new Answer('Bows/crossbows/guns are cool.', new AffinityVector()),
+        new Answer('Optimally I can still throw fireballs at people.', new AffinityVector()),
+        new Answer('I would like to help my friends.', new AffinityVector())
+    )
 );
 
 questionList.push(
     new Question(
         QuestionType.NUMERICAL,
         'How important is your PRIMARY priority to you?',
-        [],
-        []
+        new Answer(new AffinityVector()),
+        new Answer(new AffinityVector())
     )
 );
 
@@ -67,8 +63,8 @@ questionList.push(
     new Question(
         QuestionType.NUMERICAL,
         'How important is your SECONDARY priority to you? (10 meaning just as important as your primary priority)',
-        [],
-        []
+        new Answer(new AffinityVector()),
+        new Answer(new AffinityVector())
     )
 );
 
@@ -76,15 +72,12 @@ questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE_CHECKBOXES,
         'What other factors are important to you? (check all that apply)',
-        [
-            'Having an OP character', 
-            'Having a unique character', 
-            'Having a character that is easy to play', 
-            'Having a character that is good outside of combat', 
-            'Having a character that has good saving throws', 
-            'Having a character that is proficient/expert in many skills'
-        ],
-        []
+        new Answer('Having an OP character', new AffinityVector()),
+        new Answer('Having a unique character', new AffinityVector()),
+        new Answer('Having a character that is easy to play', new AffinityVector()),
+        new Answer('Having a character that is good outside of combat', new AffinityVector()),
+        new Answer('Having a character that has good saving throws', new AffinityVector()),
+        new Answer('Having a character that is proficient/expert in many skills', new AffinityVector())
     )
 );
 
@@ -92,8 +85,8 @@ questionList.push(
     new Question(
         QuestionType.TRUE_FALSE,
         'You interested in playing a homebrew class.',
-        [],
-        []
+        new Answer(new AffinityVector()),
+        new Answer(new AffinityVector())
     )
 );
 
@@ -101,11 +94,9 @@ questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
         'How much 6e content are you interested in your character having?',
-        [
-            'Bring it all on', 
-            'Nothing too complicated', 
-            'Let\'s stick to 5e'
-        ],
+        new Answer('Bring it all on', new AffinityVector()),
+        new Answer('Nothing too complicated', new AffinityVector()),
+        new Answer('Let\'s stick to 5e', new AffinityVector())
     )
 );
 
@@ -113,11 +104,9 @@ questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
         'Are you interested in multiclassing?',
-        [
-            'Nah just 16+ levels in one class please.', 
-            'I would like to heavily multiclass.', 
-            'I would take a short dip into another class if it fits and is strong.'
-        ],
+        new Answer('Nah just 16+ levels in one class please.', new AffinityVector()),
+        new Answer('I would like to heavily multiclass.', new AffinityVector()),
+        new Answer('I would take a short dip into another class if it fits and is strong.', new AffinityVector())
     )
 );
     
@@ -125,6 +114,6 @@ questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
         'Did you know that I haven\'t finished this yet and that you\'re about to be recommended Bard?',
-        ['What?'],
+        new Answer('What?', new AffinityVector())
     )
 );
