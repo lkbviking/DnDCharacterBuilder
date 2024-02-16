@@ -31,5 +31,6 @@ export class Circle {
         circle.style.opacity = opacity;
         circle.classList.add('circle');
         circle.setAttribute('id', this.circleID);
+        document.body.appendChild(circle);
     }
 }
