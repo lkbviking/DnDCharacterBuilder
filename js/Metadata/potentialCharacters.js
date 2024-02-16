@@ -1,4 +1,4 @@
-import { CharacterBuilder } from '../Character.js';
+import { Character, CharacterBuilder } from '../Character.js';
 import { AffinityVector } from '../AffinityVector.js';
 export let potentialCharacters = []
 
