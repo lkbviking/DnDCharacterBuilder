@@ -104,7 +104,7 @@ questionList.push(
     )
 );
 
-magicList.push(
+casterList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
         'How much magic (not necessarily spellcasting) do you want to have?',
