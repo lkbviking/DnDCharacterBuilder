@@ -15,8 +15,8 @@ export class Circle {
             diameter = Math.random() * (width + height) / 3;
         }
         if (position === undefined) {
-            position = [Math.random() * (width  + diameter) - diameter / 2, 
-                        Math.random() * (height + diameter) - diameter / 2];
+            position = [Math.random() * width  - diameter / 2, 
+                        Math.random() * height - diameter / 2];
         }
 
         this.circleID = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
