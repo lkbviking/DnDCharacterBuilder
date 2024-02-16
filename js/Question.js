@@ -1,5 +1,5 @@
 import { QuestionType } from './Metadata/QuestionType.js';
-import { Affinities } from './Affinities.js';
+
 export class Question {
     constructor(questionType, question, ...answers) {
         this.questionType = questionType;

@@ -1,4 +1,3 @@
-import { Character } from "./Character.js";
 import { questionList, tankList, meleeList, rangedList, casterList, supportList } from "./Metadata/questionList.js";
 import { Circle } from "./Circle.js";
 import { Affinities } from "./Affinities.js";

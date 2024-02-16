@@ -1,5 +1,3 @@
-import { Affinities } from './Affinities.js';
-
 export class Character {
     constructor(mainClass, subClass, levels, 
         multiClass, multiClassSubClass, multiClassLevels, 
@@ -23,7 +21,7 @@ export class Character {
         this.multiClassGameplayDescription = multiClassGameplayDescription;
         this.multiClassSubClassGameplayDescription = multiClassSubClassGameplayDescription;
         this.otherNotes = otherNotes;
-        this.affinities = new Affinities(...affinityVectors);
+        this.affinityVectors = affinityVectors;
     }
 
     getCharacterHTML() {
