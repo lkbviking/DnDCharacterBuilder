@@ -69,7 +69,7 @@ questionList.push(
 questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
-        'You are interested in playing a homebrew class.',
+        'Are are interested in playing a homebrew class.',
         new Answer('YES', new AffinityVector('HOMEBREW', 1, 1)),
         new Answer('NO', new AffinityVector('HOMEBREW', -1, 1))
     )
@@ -89,9 +89,9 @@ questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
         'Are you interested in multiclassing?',
-        new Answer('Nah just 16+ levels in one class please.', new AffinityVector('MULTICLASS', -1, 1)),
         new Answer('I would like to heavily multiclass.', new AffinityVector('MULTICLASS', 2, 1)),
-        new Answer('I would take a short dip into another class if it fits and is strong.', new AffinityVector('MULTICLASS', 1, 1))
+        new Answer('I would take a short dip into another class if it fits and is strong.', new AffinityVector('MULTICLASS', 1, 1)),
+        new Answer('Nah just 16+ levels in one class please.', new AffinityVector('MULTICLASS', -1, 1))
     )
 );
 
@@ -108,10 +108,10 @@ questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
         'How much magic (not necessarily spellcasting) do you want to have?',
-        new Answer('I wanna be motherf***ing Houdini', new AffinityVector('MAGIC', 5, 1)),
-        new Answer('I would like to have some magic mixed in with my non-magical abilities', new AffinityVector('MAGIC', 2, 1)),
-        new Answer('I would be okay with a few magic abilities/effects', new AffinityVector('MAGIC', 1, 1)),
-        new Answer('Who need magic when Gronk have big sword?', new AffinityVector('MAGIC', -1, 1))
+        new Answer('I wanna be motherf***ing Houdini', new AffinityVector('MAGIC', 10, 1)),
+        new Answer('I would like to have lots of magic mixed in with a few non-magical abilities', new AffinityVector('MAGIC', 5, 1)),
+        new Answer('I would be okay with a few magic abilities/effects', new AffinityVector('MAGIC', 0, 1)),
+        new Answer('Who need magic when Gronk have big sword?', new AffinityVector('MAGIC', -10, 1))
     )
 );
 
@@ -119,9 +119,8 @@ questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
         'What do you want to spend your action on most turns?',
-        new Answer('Making a weapon attack', new AffinityVector()),
-        new Answer('', new AffinityVector()),
-        new Answer('Casting a spell', new AffinityVector())
+        new Answer('Making a weapon attack', new AffinityVector('MAGIC', -5, 1)),
+        new Answer('Casting a spell', new AffinityVector('MAGIC', 5, 1)),
     )
 );
 
@@ -129,9 +128,9 @@ questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
         '',
-        new Answer('', new AffinityVector()),
-        new Answer('', new AffinityVector()),
-        new Answer('', new AffinityVector())
+        new Answer('', new AffinityVector('tbd', 1, 1)),
+        new Answer('', new AffinityVector('tbd', 1, 1)),
+        new Answer('', new AffinityVector('tbd', 1, 1))
     )
 );
     
