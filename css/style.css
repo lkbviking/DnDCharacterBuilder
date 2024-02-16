@@ -96,9 +96,5 @@ body {
 
 .circle {
     position: absolute;
-    width: 500px;
-    height: 500px;
     border-radius: 50%;
-    background-color: #3498db;
-    opacity: 0.5;
 }

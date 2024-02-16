@@ -1,6 +1,6 @@
 import { Character } from "./Character.js";
 import { questionList } from "./Metadata/questionList.js";
-
+import { Circle } from "./Circle.js";
 
 
 let currentQuestion = -1;
@@ -25,6 +25,8 @@ function submitAndDisplayNextQuestion() {
     displayNextQuestion();
 }
 
-
+document.getElementById("circleButton").onclick = function() {
+    new Circle();
+}
 displayNextQuestion();
 console.log(myCharacter.affinities);
