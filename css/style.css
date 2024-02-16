@@ -12,6 +12,7 @@ body {
     margin: 5% auto;
     background-color: #ccc;
     border-radius: 10px;
+    opacity: 0.9;
 }
 
 .question {
@@ -97,4 +98,5 @@ body {
 .circle {
     position: absolute;
     border-radius: 50%;
+    z-index: -1;
 }
