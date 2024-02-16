@@ -23,6 +23,6 @@ export class AffinityVector {
     }
 
     getAffinityHTML() {
-        return '<div class="affinity">' + this.type + ': ' + this.magnitude + '</div>';
+        return '<div class="affinity">' + this.type + ': ' + this.magnitude  + ', ' + this.polarization + '</div>';
     }
 }

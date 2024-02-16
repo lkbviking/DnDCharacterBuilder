@@ -1,19 +1,28 @@
 import { Character } from "./Character.js";
-import { questionList } from "./Metadata/questionList.js";
+import { questionList, tankList, meleeList, rangedList, casterList, supportList } from "./Metadata/questionList.js";
 import { Circle } from "./Circle.js";
+import { Affinities } from "./Affinities.js";
 
 
-let currentQuestion = -1;
-let myCharacter = new Character();
+let currentQuestion = 0;
+let myAffinities = new Affinities();
+let tankListPushed = false;
+let meleeListPushed = false;
+let rangedListPushed = false;
+let casterListPushed = false;
+let supportListPushed = false;
 
 function displayNextQuestion() {
-    currentQuestion++;
+    pushAdditionalQuestionLists();
     if(currentQuestion < questionList.length) {
         document.getElementById('container').innerHTML = questionList[currentQuestion].getQuestionHTML();
         document.getElementById("submit").onclick = submitAndDisplayNextQuestion;
     } else {
-        document.getElementById('container').innerHTML = myCharacter.getCharacterHTML();
+        console.log(myAffinities);
+        document.getElementById('container').innerHTML = myAffinities.findCharacter().getCharacterHTML() +
+                                                         myAffinities.getAffinitiesHTML();
     }
+    currentQuestion++;
 }
 
 function submitAndDisplayNextQuestion() {
@@ -21,12 +30,32 @@ function submitAndDisplayNextQuestion() {
     document.querySelectorAll('input[name="option"]:checked').forEach((option) => {
         selectedOptions.add(option.value);
     });
-    myCharacter.affinities.addAffinityVectorArray(questionList[currentQuestion].getAffinityVectors(selectedOptions));
+    myAffinities.addAffinityVectors(questionList[currentQuestion].getAffinityVectors(selectedOptions));
+    new Circle();
     displayNextQuestion();
 }
 
-document.getElementById("circleButton").onclick = function() {
-    new Circle();
+function pushAdditionalQuestionLists() {
+    if (!tankListPushed && myAffinities.getAffinityVector('TANK').magnitude > 0) {
+        questionList.push(...tankList);
+        tankListPushed = true;
+    }
+    if (!meleeListPushed && myAffinities.getAffinityVector('MELEE_DPS').magnitude > 0) {
+        questionList.push(...meleeList);
+        meleeListPushed = true;
+    }
+    if (!rangedListPushed && myAffinities.getAffinityVector('RANGED_DPS').magnitude > 0) {
+        questionList.push(...rangedList);
+        rangedListPushed = true;
+    }
+    if (!casterListPushed && myAffinities.getAffinityVector('CASTER_DPS').magnitude > 0) {
+        questionList.push(...casterList);
+        casterListPushed = true;
+    }
+    if (!supportListPushed && myAffinities.getAffinityVector('SUPPORT').magnitude > 0) {
+        questionList.push(...supportList);
+        supportListPushed = true;
+    }
 }
+
 displayNextQuestion();
-console.log(myCharacter.affinities);

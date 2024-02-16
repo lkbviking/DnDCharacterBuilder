@@ -1,4 +1,5 @@
 import { AffinityVector } from './AffinityVector.js';
+import { potentialCharacters } from './Metadata/potentialCharacters.js';
 export class Affinities {
     constructor(...affinityVectors) {
         this.data = {};
@@ -7,26 +8,22 @@ export class Affinities {
         });
     }
     
-    addAffinityVectors(...affinityVectors) {
-        let affinityData = this.data;
+    addAffinityVectors(affinityVectors) {
         affinityVectors.forEach((affinityVector) => {
-            if (affinityData[affinityVector.type] === undefined) {
-                affinityData[affinityVector.type] = affinityVector;
-                return;
-            }
-            affinityData[affinityVector.type].addVector(affinityVector);
+            this.getAffinityVector(affinityVector.type).addVector(affinityVector);
         });
     };
 
-    addAffinityVectorArray(affinityVectorArray) {
-        this.addAffinityVectors(...affinityVectorArray);
-    }
-
-
-
     add(affinities) {
-        this.addAffinityVectors(...Object.values(affinities.data));
+        this.addAffinityVectors(Object.values(affinities.data));
     };
+
+    getAffinityVector(type) {
+        if (this.data[type] === undefined) {
+            this.data[type] = new AffinityVector(type, 0, 0);
+        }
+        return this.data[type];
+    }
 
     getAffinitiesHTML() {
         let html = '<div class="affinities">';
@@ -35,5 +32,25 @@ export class Affinities {
         });
         html += '</div>';
         return html;
+    }
+
+    findCharacter() {
+        let bestCharacterRating = Number.MAX_SAFE_INTEGER;
+        let bestCharacter = null;
+        let currentRating = 0;
+        potentialCharacters.forEach((character) => {
+            currentRating = 0;
+            Object.keys(this.data).forEach((key) => {
+                currentRating += Math.abs(
+                                    this.getAffinityVector(key).magnitude
+                                    - character.affinities.getAffinityVector(key).magnitude
+                                 ) * this.getAffinityVector(key).polarization;
+            });
+            if (currentRating < bestCharacterRating) {
+                bestCharacterRating = currentRating;
+                bestCharacter = character;
+            }
+        });
+        return bestCharacter;
     }
 }

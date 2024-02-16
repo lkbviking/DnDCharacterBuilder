@@ -4,11 +4,16 @@ import { AffinityVector } from '../AffinityVector.js';
 import { Answer } from '../Answer.js';
 
 export let questionList = [];
+export let tankList = [];
+export let meleeList = [];
+export let rangedList = [];
+export let casterList = [];
+export let supportList = [];
 
 questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE_CHECKBOXES,
-        'What classes are you interested in playing? (check all that apply)',
+        'What classes are you most interested in playing? (check all that apply)',
         new Answer('Artificer', new AffinityVector('ARTIFICER', 1, 1)),
         new Answer('Barbarian', new AffinityVector('BARBARIAN', 1, 1)),
         new Answer('Bard', new AffinityVector('BARD', 1, 1)),
@@ -42,61 +47,41 @@ questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
         'What best describes your SECONDARY priority?',
-        new Answer('I would like to not die.', new AffinityVector()),
-        new Answer('I would like to smack my enemies around.', new AffinityVector()),
-        new Answer('Bows/crossbows/guns are cool.', new AffinityVector()),
-        new Answer('Optimally I can still throw fireballs at people.', new AffinityVector()),
-        new Answer('I would like to help my friends.', new AffinityVector())
-    )
-);
-
-questionList.push(
-    new Question(
-        QuestionType.NUMERICAL,
-        'How important is your PRIMARY priority to you?',
-        new Answer(new AffinityVector()),
-        new Answer(new AffinityVector())
-    )
-);
-
-questionList.push(
-    new Question(
-        QuestionType.NUMERICAL,
-        'How important is your SECONDARY priority to you? (10 meaning just as important as your primary priority)',
-        new Answer(new AffinityVector()),
-        new Answer(new AffinityVector())
+        new Answer('I would like to not die.', new AffinityVector('TANK', 1, 1)),
+        new Answer('I would like to smack my enemies around.', new AffinityVector('MELEE_DPS', 1, 1)),
+        new Answer('Bows/crossbows/guns are cool.', new AffinityVector('RANGED_DPS', 1, 1)),
+        new Answer('Optimally I can still throw fireballs at people.', new AffinityVector('CASTER_DPS', 1, 1)),
+        new Answer('I would like to help my friends.', new AffinityVector('SUPPORT', 1, 1))
     )
 );
 
 questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE_CHECKBOXES,
-        'What other factors are important to you? (check all that apply)',
-        new Answer('Having an OP character', new AffinityVector()),
-        new Answer('Having a unique character', new AffinityVector()),
-        new Answer('Having a character that is easy to play', new AffinityVector()),
-        new Answer('Having a character that is good outside of combat', new AffinityVector()),
-        new Answer('Having a character that has good saving throws', new AffinityVector()),
-        new Answer('Having a character that is proficient/expert in many skills', new AffinityVector())
-    )
-);
-
-questionList.push(
-    new Question(
-        QuestionType.TRUE_FALSE,
-        'You interested in playing a homebrew class.',
-        new Answer(new AffinityVector()),
-        new Answer(new AffinityVector())
+        'What other factors are most important to you? (check all that apply)',
+        new Answer('Having an overpowered character', new AffinityVector('POWER', 1, 1)),
+        new Answer('Having a unique character', new AffinityVector('UNIQUENESS', 1, 1)),
+        new Answer('Having a character that is easy to play', new AffinityVector('EASE_OF_PLAY', 1, 1)),
+        new Answer('Having a character that is good outside of combat', new AffinityVector('ROLEPLAY', 1, 1))
     )
 );
 
 questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
-        'How much 6e content are you interested in your character having?',
-        new Answer('Bring it all on', new AffinityVector()),
-        new Answer('Nothing too complicated', new AffinityVector()),
-        new Answer('Let\'s stick to 5e', new AffinityVector())
+        'You are interested in playing a homebrew class.',
+        new Answer('YES', new AffinityVector('HOMEBREW', 1, 1)),
+        new Answer('NO', new AffinityVector('HOMEBREW', -1, 1))
+    )
+);
+
+questionList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'How much 6e/playtest content are you interested in your character having?',
+        new Answer('Bring it all on', new AffinityVector('6E', 2, 1)),
+        new Answer('Nothing too complicated', new AffinityVector('6E', 1, 1)),
+        new Answer('Let\'s stick to 5e', new AffinityVector('6E', -1, 1))
     )
 );
 
@@ -104,9 +89,49 @@ questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
         'Are you interested in multiclassing?',
-        new Answer('Nah just 16+ levels in one class please.', new AffinityVector()),
-        new Answer('I would like to heavily multiclass.', new AffinityVector()),
-        new Answer('I would take a short dip into another class if it fits and is strong.', new AffinityVector())
+        new Answer('Nah just 16+ levels in one class please.', new AffinityVector('MULTICLASS', -1, 1)),
+        new Answer('I would like to heavily multiclass.', new AffinityVector('MULTICLASS', 2, 1)),
+        new Answer('I would take a short dip into another class if it fits and is strong.', new AffinityVector('MULTICLASS', 1, 1))
+    )
+);
+
+questionList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'What is the best way to not take damage?',
+        new Answer('Dodge', new AffinityVector('NIMBLE', 1, 1)),
+        new Answer('Block it with my armor/shield', new AffinityVector('HEAVY', 1, 1)),
+    )
+);
+
+magicList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'How much magic (not necessarily spellcasting) do you want to have?',
+        new Answer('I wanna be motherf***ing Houdini', new AffinityVector('MAGIC', 5, 1)),
+        new Answer('I would like to have some magic mixed in with my non-magical abilities', new AffinityVector('MAGIC', 2, 1)),
+        new Answer('I would be okay with a few magic abilities/effects', new AffinityVector('MAGIC', 1, 1)),
+        new Answer('Who need magic when Gronk have big sword?', new AffinityVector('MAGIC', -1, 1))
+    )
+);
+
+questionList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'What do you want to spend your action on most turns?',
+        new Answer('Making a weapon attack', new AffinityVector()),
+        new Answer('', new AffinityVector()),
+        new Answer('Casting a spell', new AffinityVector())
+    )
+);
+
+questionList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        '',
+        new Answer('', new AffinityVector()),
+        new Answer('', new AffinityVector()),
+        new Answer('', new AffinityVector())
     )
 );
     
@@ -114,6 +139,7 @@ questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
         'Did you know that I haven\'t finished this yet and that you\'re about to be recommended Bard?',
-        new Answer('What?', new AffinityVector())
+        new Answer('What?', new AffinityVector('BARD', 1, 1)),
     )
 );
+
