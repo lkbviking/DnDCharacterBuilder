@@ -21,7 +21,6 @@ function displayNextQuestion() {
         document.getElementById('container').innerHTML = myAffinities.findCharacter().getCharacterHTML() +
                                                          myAffinities.getAffinitiesHTML();
     }
-    currentQuestion++;
 }
 
 function submitAndDisplayNextQuestion() {
@@ -31,6 +30,7 @@ function submitAndDisplayNextQuestion() {
     });
     myAffinities.addAffinityVectors(questionList[currentQuestion].getAffinityVectors(selectedOptions));
     new Circle();
+    currentQuestion++;
     displayNextQuestion();
 }
 
