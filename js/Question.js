@@ -13,18 +13,13 @@ export class Question {
                 return this.getMultipleChoiceHTML();
             case QuestionType.MULTIPLE_CHOICE_CHECKBOXES:
                 return this.getMultipleChoiceCheckboxesHTML();
-            case QuestionType.TRUE_FALSE:
-                this.options = ['True', 'False'];
-                return this.getMultipleChoiceHTML();
-            case QuestionType.NUMERICAL:
-                return this.getNumericalHTML();
         }
     };
 
     getMultipleChoiceHTML() {
         let html = '<div class="question">' + this.question + '</div>';
         this.answers.forEach((answer) => {
-            html += '<div class="option"><input type="radio" name="option" value="' + answer.text + '">' + answer.text + '</div>';
+            html += '<div class="option"><label><input type="radio" name="option" value="' + answer.text + '">' + answer.text + '</label></div>';
         });
         html += '<button id="submit">Submit</button>';
         return html;
@@ -34,17 +29,8 @@ export class Question {
     getMultipleChoiceCheckboxesHTML() {
         let html = '<div class="question">' + this.question + '</div>';
         this.answers.forEach((answer) => {
-            html += '<div class="option"><input type="checkbox" name="option" value="' + answer.text + '">' + answer.text + '</div>';
+            html += '<div class="option"><label><input type="checkbox" name="option" value="' + answer.text + '">' + answer.text + '</label></div>';
         });
-        html += '<button id="submit">Submit</button>';
-        return html;
-    };
-
-    getNumericalHTML() {
-        let html = '<div class="question">' + this.question + '</div>';
-        for (let i = 0; i <= 10; i++) {
-            html += '<div class="option"><input type="radio" name="option" value="' + i + '">' + i + '</div>';
-        }
         html += '<button id="submit">Submit</button>';
         return html;
     };

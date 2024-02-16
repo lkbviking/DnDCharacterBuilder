@@ -51,7 +51,7 @@ export class Character {
             html += '<p>' + this.multiClassGameplayDescription + '</p>';
             html += '<p>' + this.multiClassSubClassGameplayDescription + '</p>';
         }
-        if (this.recommendedSpells) {
+        if (this.recommendedSpells.length > 0) {
             html += '<h1>Recommended Spells</h1>';
             html += '<h2>Cantrips:</h2>';
             for (let j = 0; j < this.recommendedSpells[0].length; j++) {
