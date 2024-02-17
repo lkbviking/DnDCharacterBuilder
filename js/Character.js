@@ -1,11 +1,12 @@
 export class Character {
-    constructor(mainClass, subClass, levels, 
+    constructor(buildName, mainClass, subClass, levels, 
         multiClass, multiClassSubClass, multiClassLevels, 
         hasPlaytestMaterial, hasHomebrewMaterial,
         statsArray, recommendedSpells,
         narritiveDescription, mainClassGameplayDescription, 
         multiClassGameplayDescription, multiClassSubClassGameplayDescription,
         otherNotes, affinityVectors) {
+        this.buildName = buildName;
         this.mainClass = mainClass;
         this.subClass = subClass;
         this.levels = levels;
@@ -22,6 +23,16 @@ export class Character {
         this.multiClassSubClassGameplayDescription = multiClassSubClassGameplayDescription;
         this.otherNotes = otherNotes;
         this.affinityVectors = affinityVectors;
+        if (this.hasHomebrewMaterial) {
+            this.affinityVectors.add(new AffinityVector('HOMEBREW', 5));
+        } else {
+            this.affinityVectors.add(new AffinityVector('HOMEBREW', -5));
+        }
+        if (this.hasPlaytestMaterial) {
+            this.affinityVectors.add(new AffinityVector('6E', 5));
+        } else {
+            this.affinityVectors.add(new AffinityVector('6E', -5));
+        }
     }
 
     getCharacterHTML() {
@@ -76,6 +87,7 @@ export class Character {
 
 export class CharacterBuilder {
     constructor() {
+        this.buildName = '';
         this.mainClass = '';
         this.subClass = '';
         this.levels = '';
@@ -92,6 +104,11 @@ export class CharacterBuilder {
         this.multiClassSubClassGameplayDescription = '';
         this.otherNotes = '';
         this.affinityVectors = [];
+    }
+
+    setBuildName(buildName) {
+        this.buildName = buildName;
+        return this;
     }
 
     setMainClass(mainClass) {
@@ -176,6 +193,7 @@ export class CharacterBuilder {
 
     build() {
         return new Character(
+            this.buildName,
             this.mainClass, 
             this.subClass, 
             this.levels, 

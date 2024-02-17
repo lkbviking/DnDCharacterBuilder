@@ -28,10 +28,14 @@ function submitAndDisplayNextQuestion() {
     document.querySelectorAll('input[name="option"]:checked').forEach((option) => {
         selectedOptions.add(option.value);
     });
-    myAffinities.addAffinityVectors(questionList[currentQuestion].getAffinityVectors(selectedOptions));
-    new Circle();
-    currentQuestion++;
-    displayNextQuestion();
+    if (selectedOptions.size === 0) {
+        alert('Please select an option');
+    } else {
+        myAffinities.addAffinityVectors(questionList[currentQuestion].getAffinityVectors(selectedOptions));
+        new Circle();
+        currentQuestion++;
+        displayNextQuestion();
+    }
 }
 
 function pushAdditionalQuestionLists() {
@@ -57,4 +61,4 @@ function pushAdditionalQuestionLists() {
     }
 }
 
-displayNextQuestion();
+document.getElementById("submit").onclick = displayNextQuestion();

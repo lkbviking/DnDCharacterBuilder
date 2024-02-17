@@ -40,8 +40,8 @@ export class Affinities {
         let currentRating = 0;
         potentialCharacters.forEach((character) => {
             currentRating = 0;
+            let characterAffinities = new Affinities(character.affinityVectors);
             Object.keys(this.data).forEach((key) => {
-                let characterAffinities = new Affinities(character.affinityVectors);
                 currentRating += Math.abs(
                                     this.getAffinityVector(key).magnitude
                                     - characterAffinities.getAffinityVector(key).magnitude
@@ -51,6 +51,7 @@ export class Affinities {
                 bestCharacterRating = currentRating;
                 bestCharacter = character;
             }
+            console.log(character.buildName + ': ' + currentRating);
         });
         return bestCharacter;
     }
