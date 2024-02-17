@@ -26,11 +26,9 @@ function displayNextQuestion() {
 function submitAndDisplayNextQuestion() {
     let selectedOptions = new Set();
     let isCheckbox = false;
-    document.querySelectorAll('input[name="option"]:checked').forEach((option) => {
-        selectedOptions.add(option.value);
-        if (option.type === 'checkbox') {
-            isCheckbox = true;
-        }
+    document.querySelectorAll('input[name="option"]').forEach((option) => {
+        if (option.checked) selectedOptions.add(option.value);
+        if (option.type === 'checkbox') isCheckbox = true;
     });
     if (!isCheckbox && selectedOptions.size === 0) {
         alert('Please select an option');

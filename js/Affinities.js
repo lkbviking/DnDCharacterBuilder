@@ -38,9 +38,10 @@ export class Affinities {
         let bestCharacterRating = Number.MAX_SAFE_INTEGER;
         let bestCharacter = null;
         let currentRating = 0;
+        let characterAffinities = null;
         potentialCharacters.forEach((character) => {
             currentRating = 0;
-            let characterAffinities = new Affinities(character.affinityVectors);
+            characterAffinities = new Affinities(character.affinityVectors);
             Object.keys(this.data).forEach((key) => {
                 currentRating += Math.abs(
                                     this.getAffinityVector(key).magnitude
