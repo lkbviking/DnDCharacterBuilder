@@ -7,7 +7,7 @@ export class Affinities {
         }
         this.data = {};
         affinityVectors.forEach((affinityVector) => {
-            this.data[affinityVector.vectorType] = affinityVector;
+            this.data[affinityVector.type] = affinityVector;
         });
     }
     
