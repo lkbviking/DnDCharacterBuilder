@@ -2,6 +2,9 @@ import { AffinityVector } from './AffinityVector.js';
 import { potentialCharacters } from './Metadata/potentialCharacters.js';
 export class Affinities {
     constructor(affinityVectors) {
+        if (affinityVectors === undefined) {
+            affinityVectors = [];
+        }
         this.data = {};
         affinityVectors.forEach((affinityVector) => {
             this.data[affinityVector.vectorType] = affinityVector;
