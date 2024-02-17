@@ -1,3 +1,4 @@
+import { AffinityVector } from './AffinityVector.js';
 export class Character {
     constructor(buildName, mainClass, subClass, levels, 
         multiClass, multiClassSubClass, multiClassLevels, 
@@ -32,6 +33,10 @@ export class Character {
             this.affinityVectors.add(new AffinityVector('6E', 5));
         } else {
             this.affinityVectors.add(new AffinityVector('6E', -5));
+        }
+        this.affinityVectors.add(new AffinityVector(this.mainClass.toUpperCase(), this.levels));
+        if (this.multiClassLevels > 0) {
+            this.affinityVectors.add(new AffinityVector(this.multiClass.toUpperCase(), this.multiClassLevels));
         }
     }
 
