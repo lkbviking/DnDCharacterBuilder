@@ -42,11 +42,13 @@ export class Affinities {
         potentialCharacters.forEach((character) => {
             currentRating = 0;
             characterAffinities = new Affinities(character.affinityVectors);
+            console.log(characterAffinities);
             Object.keys(this.data).forEach((key) => {
                 currentRating += Math.abs(
                                     this.getAffinityVector(key).magnitude
                                     - characterAffinities.getAffinityVector(key).magnitude
                                  ) * this.getAffinityVector(key).polarization;
+                console.log(currentRating);
             });
             if (currentRating < bestCharacterRating) {
                 bestCharacterRating = currentRating;
