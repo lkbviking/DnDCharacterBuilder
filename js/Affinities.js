@@ -51,7 +51,6 @@ export class Affinities {
                                     this.getAffinityVector(key).magnitude
                                     - characterAffinities.getAffinityVector(key).magnitude
                                  ) * this.getAffinityVector(key).polarization;
-                console.log(currentRating);
             });
             if (currentRating < bestCharacterRating) {
                 bestCharacterRating = currentRating;

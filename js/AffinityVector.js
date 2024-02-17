@@ -4,7 +4,7 @@ export class AffinityVector {
             magnitude = 0;
         }
         if (polarization === undefined) {
-            polarization = 1;
+            polarization = 0;
         }
         this.type = type;
         this.magnitude = magnitude;

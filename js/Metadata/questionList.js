@@ -55,7 +55,7 @@ questionList.push(
 questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
-        'Which type of roll would you PRIMARILY like to play?',
+        'Which type of role would you PRIMARILY like to play?',
         new Answer('Tank', new AffinityVector('TANK', 10, 10)),
         new Answer('Melee DPS', new AffinityVector('MELEE_DPS', 10, 10)),
         new Answer('Ranged DPS', new AffinityVector('RANGED_DPS', 10, 10)),
@@ -82,7 +82,7 @@ questionList.push(
         'What other factors are most important to you? (check all that apply)',
         new Answer('Having an overpowered character', new AffinityVector('POWER', 5, 5)),
         new Answer('Having a unique character', new AffinityVector('UNIQUENESS', 5, 5)),
-        new Answer('Having a character that is good outside of combat', new AffinityVector('ROLEPLAY', 5, 5))
+        new Answer('Having a character that is proficient/expert in many skills', new AffinityVector('EXPERT', 5, 5))
         
     )
 );
@@ -92,7 +92,7 @@ questionList.push(
         QuestionType.MULTIPLE_CHOICE,
         'How many options do you want to have in combat?',
         new Answer('I want a character that is easy to play (not a lot of decisions on what to do each round)', new AffinityVector('VERSATILITY', -10, 5)),
-        new Answer('I like having a character that has options but nothing crazy.', new AffinityVector('ROLEPLAY', 0, 5)),
+        new Answer('I like having a character that has options but nothing crazy.', new AffinityVector('VERSATILITY', 0, 5)),
         new Answer('I would prefer a character that does something completely new every turn.', new AffinityVector('VERSATILITY', 10, 5)),
         new Answer('I don\'t care.', new AffinityVector('VERSATILITY', 0, 0))
     )
@@ -132,9 +132,10 @@ questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
         'What is the best way to not take damage?',
-        new Answer('Dodge', new AffinityVector('NIMBLE', 5, 5)),
-        new Answer('Not taking damage is not taking damage', new AffinityVector('TBD', 0, 0)),
-        new Answer('Block it with my armor/shield', new AffinityVector('HEAVY', 5, 5))
+        new Answer('Dodge', new AffinityVector('NIMBLE', 5, 5), new AffinityVector('DEFENCE', 2, 2)),
+        new Answer('Block it with my armor/shield', new AffinityVector('ARMOR', 5, 5), new AffinityVector('DEFENCE', 2, 2)),
+        new Answer('Defense is lame, I make up for being squishy with raw power.', new AffinityVector('POWER', 2, 2), new AffinityVector('DEFENCE', -2, 2)),
+        new Answer('Defense is critical but idc how I get tanky.', new AffinityVector('DEFENCE', 5, 5))
     )
 );
 
@@ -162,18 +163,20 @@ questionList.push(
 questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
+        'How important is it to you that you have naturally (without spells/buffs) high defenses?',
+        new Answer('Defense is nice but not at the expense of my primary role.', new AffinityVector('POWER', 3, 3), new AffinityVector('DEFENCE', -5, 5)),
+        new Answer('I would make small concessions in order to have better defense.', new AffinityVector('DEFENCE', 0, 0)),
+        new Answer('I want to be immortal.', new AffinityVector('DEFENCE', 5, 5))
+    )
+);
+
+questionList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
         '',
         new Answer('', new AffinityVector('tbd', 1, 1)),
         new Answer('', new AffinityVector('tbd', 1, 1)),
         new Answer('', new AffinityVector('tbd', 1, 1))
-    )
-);
-    
-questionList.push(
-    new Question(
-        QuestionType.MULTIPLE_CHOICE,
-        'Did you know that I haven\'t finished this yet and that you\'re about to be recommended Bard?',
-        new Answer('What?', new AffinityVector('BARD', 1, 1)),
     )
 );
 
@@ -182,9 +185,10 @@ supportList.push(
         QuestionType.MULTIPLE_CHOICE,
         'Assume you are a support character. It is the start of a dangerous combat and you are first. All allies and enemies are at full health. What would you like to do?',
         new Answer('Use a spell slot for big damage.', new AffinityVector('SECONDARY_CASTER_DPS', 5, 5)),
-        new Answer('Save my spell slots, just use a cantrip or weapon attack from safety.', new AffinityVector('SECONDARY_SUPPORT', 5, 5), new AffinityVector('SECONDARY_MELEE_DPS', 5, 5)),
+        new Answer('Save my spell slots, just use a cantrip or weapon attack from safety.', new AffinityVector('SECONDARY_SUPPORT', 1, 1), new AffinityVector('SECONDARY_MELEE_DPS', 1, 1), new AffinityVector('SECONDARY_RANGED_DPS', 1, 1)),
         new Answer('Use a spell slot to premtively buff allies.', new AffinityVector('SECONDARY_SUPPORT', 5, 5)),
-        new Answer('Who said supports should stand at the back? CHARGE! (rush into melee)', new AffinityVector('SECONDARY_MELEE_DPS', 5, 5))
+        new Answer('Who said supports should stand at the back? CHARGE! (rush into melee)', new AffinityVector('SECONDARY_MELEE_DPS', 3, 3), new AffinityVector('SECONDARY_TANK', 2, 2)),
+        new Answer('Fire a bow/crossbow.', new AffinityVector('SECONDARY_RANGED_DPS', 5, 5))
     )
 );
 
