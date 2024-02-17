@@ -25,18 +25,18 @@ export class Character {
         this.otherNotes = otherNotes;
         this.affinityVectors = affinityVectors;
         if (this.hasHomebrewMaterial) {
-            this.affinityVectors.add(new AffinityVector('HOMEBREW', 5));
+            this.affinityVectors.push(new AffinityVector('HOMEBREW', 5));
         } else {
-            this.affinityVectors.add(new AffinityVector('HOMEBREW', -5));
+            this.affinityVectors.push(new AffinityVector('HOMEBREW', -5));
         }
         if (this.hasPlaytestMaterial) {
-            this.affinityVectors.add(new AffinityVector('6E', 5));
+            this.affinityVectors.push(new AffinityVector('6E', 5));
         } else {
-            this.affinityVectors.add(new AffinityVector('6E', -5));
+            this.affinityVectors.push(new AffinityVector('6E', -5));
         }
-        this.affinityVectors.add(new AffinityVector(this.mainClass.toUpperCase(), this.levels));
+        this.affinityVectors.push(new AffinityVector(this.mainClass.toUpperCase(), this.levels));
         if (this.multiClassLevels > 0) {
-            this.affinityVectors.add(new AffinityVector(this.multiClass.toUpperCase(), this.multiClassLevels));
+            this.affinityVectors.push(new AffinityVector(this.multiClass.toUpperCase(), this.multiClassLevels));
         }
     }
 
