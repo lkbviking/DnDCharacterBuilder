@@ -65,4 +65,4 @@ function pushAdditionalQuestionLists() {
     }
 }
 
-document.getElementById("submit").onclick = displayNextQuestion();
+document.getElementById("submit").onclick = displayNextQuestion;
