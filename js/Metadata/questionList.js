@@ -212,7 +212,7 @@ questionList.push(
         new Answer('Cast Haste on myself for the extra damage every turn.', new AffinityVector('NOVA', -5, 5))
     )
 );
-
+/*
 questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
@@ -222,7 +222,7 @@ questionList.push(
         new Answer('', new AffinityVector('tbd', 1, 1))
     )
 );
-
+*/
 tankList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,

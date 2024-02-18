@@ -126,7 +126,7 @@ potentialCharacters.push(
 
 potentialCharacters.push(
     new CharacterBuilder()
-    .setBuildName('Crusader of the Light')
+    .setBuildName('The Crusader of the Light')
     .setMainClass('Priest')
     .setSubClass('')
     .setLevels(10)
@@ -234,7 +234,7 @@ potentialCharacters.push(
 
 potentialCharacters.push(
     new CharacterBuilder()
-    .setBuildName('Arcane Archer')
+    .setBuildName('The Arcane Archer')
     .setMainClass('Fighter')
     .setSubClass('Arcane Archer')
     .setLevels(11)
@@ -307,7 +307,7 @@ potentialCharacters.push(
     .addAffinityVector(new AffinityVector('SAVE', NONE))
     .build()
 );
-
+/*
 potentialCharacters.push(
     new CharacterBuilder()
     .setBuildName('')
@@ -345,41 +345,4 @@ potentialCharacters.push(
     .addAffinityVector(new AffinityVector('SAVE', NONE))
     .build()
 );
-
-potentialCharacters.push(
-    new CharacterBuilder()
-    .setBuildName('')
-    .setMainClass('')
-    .setSubClass('')
-    .setLevels(10)
-    .setMultiClass('')
-    .setMultiClassSubClass('')
-    .setMultiClassLevels(6)
-    .setHasPlaytestMaterial(false)
-    .setHasHomebrewMaterial(false)
-    .setNarritiveDescription('')
-    .setMainClassGameplayDescription('')
-    .setOtherNotes('')
-    .addAffinityVector(new AffinityVector('TANK', NONE))
-    .addAffinityVector(new AffinityVector('MELEE_DPS', NONE))
-    .addAffinityVector(new AffinityVector('RANGED_DPS', NONE))
-    .addAffinityVector(new AffinityVector('CASTER_DPS', NONE))
-    .addAffinityVector(new AffinityVector('SUPPORT', NONE))
-    .addAffinityVector(new AffinityVector('POWER', NONE))
-    .addAffinityVector(new AffinityVector('UNIQUENESS', NONE))
-    .addAffinityVector(new AffinityVector('EXPERT', NONE))
-    .addAffinityVector(new AffinityVector('VERSATILITY', NONE))
-    .addAffinityVector(new AffinityVector('MULTICLASS', NONE))
-    .addAffinityVector(new AffinityVector('NIMBLE', NONE))
-    .addAffinityVector(new AffinityVector('STALWART', NONE))
-    .addAffinityVector(new AffinityVector('FIELD', NONE))
-    .addAffinityVector(new AffinityVector('MAGIC', NONE))
-    .addAffinityVector(new AffinityVector('DEFENCE', NONE))
-    .addAffinityVector(new AffinityVector('NOVA', NONE))
-    .addAffinityVector(new AffinityVector('BUFF', NONE))
-    .addAffinityVector(new AffinityVector('DEBUFF', NONE))
-    .addAffinityVector(new AffinityVector('HEAL', NONE))
-    .addAffinityVector(new AffinityVector('SHIELD', NONE))
-    .addAffinityVector(new AffinityVector('SAVE', NONE))
-    .build()
-);
+*/
