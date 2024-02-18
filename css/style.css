@@ -6,6 +6,9 @@ body {
     overflow-x: hidden;
 }
 
+p {
+    font-size: x-large;
+}
 
 
 #container {

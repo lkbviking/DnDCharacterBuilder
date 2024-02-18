@@ -10,10 +10,32 @@ export let rangedList = [];
 export let casterList = [];
 export let supportList = [];
 
+/* General
+    Bad class -10, 10
+    Good class 5, 10 = 50
+    Role 10/15/20, 10/15/20 = 400
+    Secondary 5/10/15, 5/10/15 = 100
+    Role total: 425
+*/
+/* Major
+    Magic -10/10, 10 = 100
+    Versatility -10/10, 5 = 50
+    Defense -10/10, 10 = 100
+    Nova -10, 10 = 25
+*/
+/* Minor
+    Power, Uniqueness, Expert 5, 5 = 25
+    Nimble Stalwart Field 5, 5 = 25
+
+*/
+
+/* Support
+    Buff/Debuff/healing/shielding/saves 10, 10 = 25
+*/
 questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE_CHECKBOXES,
-        'What classes are you NOT interested in playing (at all, including multiclasses)?',
+        'Are there any classes are you NOT interested in playing (AT ALL, including multiclasses)?',
         new Answer('Artificer', new AffinityVector('ARTIFICER', -10, 10)),
         new Answer('Barbarian', new AffinityVector('BARBARIAN', -10, 10)),
         new Answer('Bard', new AffinityVector('BARD', -10, 10)),
@@ -67,12 +89,12 @@ questionList.push(
 questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
-        'What best describes your SECONDARY priority?',
-        new Answer('I would like to be tanky.', new AffinityVector('SECONDARY_TANK', 5, 5)),
-        new Answer('I would like to be a damage threat when in melee range.', new AffinityVector('SECONDARY_MELEE_DPS', 5, 5)),
-        new Answer('Bows/crossbows/guns are cool.', new AffinityVector('SECONDARY_RANGED_DPS', 5, 5)),
-        new Answer('Optimally I can still throw fireballs at people.', new AffinityVector('SECONDARY_CASTER_DPS', 5, 5)),
-        new Answer('I would like to help my friends.', new AffinityVector('SECONDARY_SUPPORT', 5, 5))
+        'What best describes your SECONDARY priority? (can be the same as the first if you want to be a one-trick pony)',
+        new Answer('I would like to be tanky.', new AffinityVector('TANK', 5, 5)),
+        new Answer('I would like to be a damage threat when in melee range.', new AffinityVector('MELEE_DPS', 5, 5)),
+        new Answer('I would like to make weapon attacks from a safe distance.', new AffinityVector('RANGED_DPS', 5, 5)),
+        new Answer('I would like to throw the occasional fireball.', new AffinityVector('CASTER_DPS', 5, 5)),
+        new Answer('I would like to help my friends.', new AffinityVector('SUPPORT', 5, 5))
     )
 );
 
@@ -133,9 +155,10 @@ questionList.push(
         QuestionType.MULTIPLE_CHOICE,
         'What is the best way to not take damage?',
         new Answer('Dodge', new AffinityVector('NIMBLE', 5, 5), new AffinityVector('DEFENCE', 2, 2)),
-        new Answer('Block it with my armor/shield', new AffinityVector('ARMOR', 5, 5), new AffinityVector('DEFENCE', 2, 2)),
-        new Answer('Defense is lame, I make up for being squishy with raw power.', new AffinityVector('POWER', 2, 2), new AffinityVector('DEFENCE', -2, 2)),
-        new Answer('Defense is critical but idc how I get tanky.', new AffinityVector('DEFENCE', 5, 5))
+        new Answer('Block it with my armor/shield', new AffinityVector('STALWART', 5, 5), new AffinityVector('DEFENCE', 2, 2)),
+        new Answer('Magical protection', new AffinityVector('FIELD', 5, 5), new AffinityVector('DEFENCE', 2, 2)),
+        new Answer('Defense is lame, I make up for being squishy with raw power.', new AffinityVector('DEFENCE', -2, 2)),
+        new Answer('Defense is critical but they type of defense is unimportant.', new AffinityVector('DEFENCE', 2, 2))
     )
 );
 
@@ -146,17 +169,7 @@ questionList.push(
         new Answer('I wanna be motherf***ing Houdini', new AffinityVector('MAGIC', 10, 10)),
         new Answer('I would like to have lots of magic mixed in with a few non-magical abilities', new AffinityVector('MAGIC', 5, 5)),
         new Answer('I would be okay with a few magic abilities/effects', new AffinityVector('MAGIC', 0, 0)),
-        new Answer('Who need magic when Gronk have big sword?', new AffinityVector('MAGIC', -10, 1))
-    )
-);
-
-questionList.push(
-    new Question(
-        QuestionType.MULTIPLE_CHOICE,
-        'What do you want to spend your action on most turns?',
-        new Answer('Making a weapon attack', new AffinityVector('MAGIC', -5, 1)),
-        new Answer('Whatever the situation calls for.', new AffinityVector('MAGIC', 0, 0)),
-        new Answer('Casting a spell', new AffinityVector('MAGIC', 5, 1)),
+        new Answer('Who need magic when Gronk have big sword?', new AffinityVector('MAGIC', -10, 10))
     )
 );
 
@@ -164,9 +177,39 @@ questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
         'How important is it to you that you have naturally (without spells/buffs) high defenses?',
-        new Answer('Defense is nice but not at the expense of my primary role.', new AffinityVector('POWER', 3, 3), new AffinityVector('DEFENCE', -5, 5)),
+        new Answer('Defense is nice but not at the expense of my primary role.', new AffinityVector('DEFENCE', -5, 5)),
         new Answer('I would make small concessions in order to have better defense.', new AffinityVector('DEFENCE', 0, 0)),
         new Answer('I want to be immortal.', new AffinityVector('DEFENCE', 5, 5))
+    )
+);
+
+questionList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'Which do you care about more with regard to damaging enemies?',
+        new Answer('The ability to deal consistant damage every round.', new AffinityVector('NOVA', -5, 5)),
+        new Answer('The ability to deal higher but inconsistant damage on a single round.', new AffinityVector('NOVA', 5, 5)),
+        new Answer('I prefer characters that have ok DpR while still having emergency burst options.', new AffinityVector('NOVA', 0, 5)),
+        new Answer('It does not matter to me.', new AffinityVector('NOVA', 0, 0))
+    )
+);
+
+questionList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'You are the last one standing on your team and you are facing off against the last enemy of the fight. With 1hp left, how would you like the fight to end?',
+        new Answer('The enemy rolls one under your AC, allowing you one extra turn to end the fight.', new AffinityVector('DEFENCE', 3, 3)),
+        new Answer('You deal just enough damage to finish the enemy before he gets a turn to finish you off.', new AffinityVector('DEFENCE', -3, 3)),
+        new Answer('Either works.', new AffinityVector('DEFENCE', 0, 0))
+    )
+);
+
+questionList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'If you were an Arcane Archer with one 3rd level spell slot left in the midst of a difficult encounter, what would you do?',
+        new Answer('Cast Fireball for damage now.', new AffinityVector('NOVA', 5, 5)),
+        new Answer('Cast Haste on myself for the extra damage every turn.', new AffinityVector('NOVA', -5, 5))
     )
 );
 
@@ -180,15 +223,125 @@ questionList.push(
     )
 );
 
-supportList.push(
+tankList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
-        'Assume you are a support character. It is the start of a dangerous combat and you are first. All allies and enemies are at full health. What would you like to do?',
-        new Answer('Use a spell slot for big damage.', new AffinityVector('SECONDARY_CASTER_DPS', 5, 5)),
-        new Answer('Save my spell slots, just use a cantrip or weapon attack from safety.', new AffinityVector('SECONDARY_SUPPORT', 1, 1), new AffinityVector('SECONDARY_MELEE_DPS', 1, 1), new AffinityVector('SECONDARY_RANGED_DPS', 1, 1)),
-        new Answer('Use a spell slot to premtively buff allies.', new AffinityVector('SECONDARY_SUPPORT', 5, 5)),
-        new Answer('Who said supports should stand at the back? CHARGE! (rush into melee)', new AffinityVector('SECONDARY_MELEE_DPS', 3, 3), new AffinityVector('SECONDARY_TANK', 2, 2)),
-        new Answer('Fire a bow/crossbow.', new AffinityVector('SECONDARY_RANGED_DPS', 5, 5))
+        'It is the middle of a difficult combat. The closest enemy is 60ft away. What would you like to do?',
+        new Answer('', new AffinityVector('CASTER_DPS', 5, 5)),
+        new Answer('', new AffinityVector('RANGED_DPS', 5, 5)),
+        new Answer('', new AffinityVector('SUPPORT', 5, 5)),
+        new Answer('', new AffinityVector('TANK', 5, 5)),
+        new Answer('', new AffinityVector('MELEE_DPS', 5, 5))
     )
 );
 
+meleeList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'It is the middle of a difficult combat. The closest enemy is 60ft away. What would you like to do?',
+        new Answer('Cast a spell or cantrip.', new AffinityVector('CASTER_DPS', 5, 5)),
+        new Answer('Use a ranged weapon attack.', new AffinityVector('RANGED_DPS', 5, 5)),
+        new Answer('Aid your allies.', new AffinityVector('SUPPORT', 5, 5)),
+        new Answer('Protect yourself', new AffinityVector('TANK', 5, 5)),
+        new Answer('Dash into melee range and use a bonus action melee attack.', new AffinityVector('MELEE_DPS', 5, 5))
+    )
+);
+
+rangedList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'It is the middle of an difficult combat. There are still several enemies remaining, one of whom is attacking you with melee weapon attacks. What would you like to do?',
+        new Answer('Cast a spell appropriate for the situation.', new AffinityVector('CASTER_DPS', 5, 5)),
+        new Answer('Save my resources, just use a cantrip or weapon attack.', new AffinityVector('CASTER_DPS', 1, 1), new AffinityVector('MELEE_DPS', 1, 1), new AffinityVector('RANGED_DPS', 1, 1)),
+        new Answer('Aid an ally in more danger than you.', new AffinityVector('SUPPORT', 5, 5)),
+        new Answer('Find a way to escape melee range and use a ranged weapon attack.', new AffinityVector('RANGED_DPS', 5, 5)),
+        new Answer('Attack with a melee weapon.', new AffinityVector('MELEE_DPS', 5, 5))
+    )
+);
+
+casterList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'It is the middle of an easy combat. There are still several enemies remaining but they are not a huge threat. However, your allies have sustained some injuries. What would you like to do?',
+        new Answer('Fireball. Hitting all remaining enemies but further injuring allies who are in melee.', new AffinityVector('CASTER_DPS', 5, 5)),
+        new Answer('Save my resources, just use a cantrip or weapon attack.', new AffinityVector('CASTER_DPS', 1, 1), new AffinityVector('MELEE_DPS', 1, 1), new AffinityVector('RANGED_DPS', 1, 1)),
+        new Answer('Use a spell slot to heal, protect, or buff the ally in the most danger.', new AffinityVector('SUPPORT', 5, 5)),
+        new Answer('Use a ranged weapon attack.', new AffinityVector('RANGED_DPS', 5, 5)),
+        new Answer('Heal or protect myself.', new AffinityVector('TANK', 5, 5))
+    )
+);
+
+supportList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'It is the start of a dangerous combat and you are first. All allies and enemies are at full health. What would you like to do?',
+        new Answer('Use a spell slot for big damage.', new AffinityVector('CASTER_DPS', 5, 5)),
+        new Answer('Save my spell slots, just use a cantrip or weapon attack.', new AffinityVector('SUPPORT', 1, 1), new AffinityVector('MELEE_DPS', 1, 1), new AffinityVector('RANGED_DPS', 1, 1)),
+        new Answer('Use a spell slot to premtively buff allies.', new AffinityVector('SUPPORT', 5, 5)),
+        new Answer('Who said supports should stand at the back? CHARGE! (rush into melee)', new AffinityVector('MELEE_DPS', 3, 3), new AffinityVector('TANK', 2, 2)),
+        new Answer('Use a ranged weapon attack.', new AffinityVector('RANGED_DPS', 5, 5))
+    )
+);
+
+supportList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'What is your preferred way of assisting allies?',
+        new Answer('Restoring their hitpoints after they have taken damage.', new AffinityVector('HEAL', 5, 5)),
+        new Answer('Protecting them from taking damage.', new AffinityVector('SHIELD', 5, 5)),
+        new Answer('Protecting them from harmful spells.', new AffinityVector('SAVE', 5, 5)),
+        new Answer('Empowering them so they can deal more damage.', new AffinityVector('BUFF', 5, 5)),
+        new Answer('Using abilities on enemies to make them less dangerous.', new AffinityVector('DEBUFF', 5, 5)),
+        new Answer('Any or all of the above.', new AffinityVector('HEAL', 0, 0))
+    )
+);
+
+supportList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'What is the best early support spell?',
+        new Answer('Cure Wounds', new AffinityVector('HEAL', 5, 5)),
+        new Answer('Bless', new AffinityVector('BUFF', 5, 5)),
+        new Answer('Any or all of the above.', new AffinityVector('HEAL', 0, 0))
+    )
+);
+
+supportList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'What is the best early support spell?',
+        new Answer('Shield of Faith', new AffinityVector('SHIELD', 5, 5)),
+        new Answer('Bane', new AffinityVector('DEBUFF', 5, 5)),
+        new Answer('Any or all of the above.', new AffinityVector('HEAL', 0, 0))
+    )
+);
+
+supportList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'What is the best feature/spell?',
+        new Answer('Aura of Protection.', new AffinityVector('SAVE', 5, 5)),
+        new Answer('Haste.', new AffinityVector('BUFF', 5, 5)),
+        new Answer('Any or all of the above.', new AffinityVector('HEAL', 0, 0))
+    )
+);
+
+supportList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'Which would you pick if you could permanently give your whole party one of the following effects?',
+        new Answer('Evasion.', new AffinityVector('SAVE', 5, 5)),
+        new Answer('+3 AC', new AffinityVector('SHIELD', 5, 5)),
+        new Answer('Any or all of the above.', new AffinityVector('HEAL', 0, 0))
+    )
+);
+
+supportList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'What is the better spell?',
+        new Answer('Healing Word.', new AffinityVector('HEAL', 5, 5)),
+        new Answer('Faerie Fire.', new AffinityVector('DEBUFF', 5, 5)),
+        new Answer('Any or all of the above.', new AffinityVector('HEAL', 0, 0))
+    )
+);

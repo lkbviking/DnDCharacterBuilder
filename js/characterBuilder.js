@@ -5,14 +5,11 @@ import { Affinities } from "./Affinities.js";
 
 let currentQuestion = 0;
 let myAffinities = new Affinities();
-let tankListPushed = false;
-let meleeListPushed = false;
-let rangedListPushed = false;
-let casterListPushed = false;
-let supportListPushed = false;
 
 function displayNextQuestion() {
-    pushAdditionalQuestionLists();
+    if (currentQuestion === 5) {
+        pushAdditionalQuestionLists();
+    }
     if(currentQuestion < questionList.length) {
         document.getElementById('container').innerHTML = questionList[currentQuestion].getQuestionHTML();
         document.getElementById("submit").onclick = submitAndDisplayNextQuestion;
@@ -41,25 +38,20 @@ function submitAndDisplayNextQuestion() {
 }
 
 function pushAdditionalQuestionLists() {
-    if (!tankListPushed && myAffinities.getAffinityVector('TANK').magnitude > 0) {
+    if (myAffinities.getAffinityVector('TANK').magnitude > 0) {
         questionList.push(...tankList);
-        tankListPushed = true;
     }
-    if (!meleeListPushed && myAffinities.getAffinityVector('MELEE_DPS').magnitude > 0) {
+    if (myAffinities.getAffinityVector('MELEE_DPS').magnitude > 0) {
         questionList.push(...meleeList);
-        meleeListPushed = true;
     }
-    if (!rangedListPushed && myAffinities.getAffinityVector('RANGED_DPS').magnitude > 0) {
+    if (myAffinities.getAffinityVector('RANGED_DPS').magnitude > 0) {
         questionList.push(...rangedList);
-        rangedListPushed = true;
     }
-    if (!casterListPushed && myAffinities.getAffinityVector('CASTER_DPS').magnitude > 0) {
+    if (myAffinities.getAffinityVector('CASTER_DPS').magnitude > 0) {
         questionList.push(...casterList);
-        casterListPushed = true;
     }
-    if (!supportListPushed && myAffinities.getAffinityVector('SUPPORT').magnitude > 0) {
+    if (myAffinities.getAffinityVector('SUPPORT').magnitude > 0) {
         questionList.push(...supportList);
-        supportListPushed = true;
     }
 }
 
