@@ -146,7 +146,8 @@ questionList.push(
         'Are you interested in multiclassing?',
         new Answer('I am happy to have multiple classes.', new AffinityVector('MULTICLASS', 10, 0)),
         new Answer('I would take a short dip into another class if it fits and is strong.', new AffinityVector('MULTICLASS', 1, 5)),
-        new Answer('Nah just 16+ levels in one class please.', new AffinityVector('MULTICLASS', -10, 5))
+        new Answer('Nah just 16+ levels in one class please.', new AffinityVector('MULTICLASS', -10, 5)),
+        new Answer('Whatever works.', new AffinityVector('MULTICLASS', 0, 0))
     )
 );
 
