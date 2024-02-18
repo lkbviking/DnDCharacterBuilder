@@ -41,8 +41,8 @@ export class Character {
     }
 
     getCharacterHTML() {
-        html += '<h1>Your Build is ' + this.buildName + '</h1>';
         let html = '<div class="character">';
+        html += '<h1>Your Build is ' + this.buildName + '</h1>';
         if (this.hasPlaytestMaterial) {
             html += '<p>Using the cool new stuff from the playtest/6e...</p>';
         }
