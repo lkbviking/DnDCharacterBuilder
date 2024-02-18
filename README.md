@@ -21,11 +21,4 @@ Current Issues:
 
 - The Program only has a small number of builds it ever recommends.
 
-
-Priority List:
-
-- Add recommended spells
-
-- Add recommended background and race
-
-- Add recommended attributes and feats
+- Many Characters that are recommended are missing descriptions.
