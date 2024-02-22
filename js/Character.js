@@ -1,7 +1,7 @@
 import { AffinityVector } from './AffinityVector.js';
 import { potentialCharacters } from './Metadata/potentialCharacters.js';
 import { sanitizeText, characterLink } from './links.js';
-domain = "https://lkbviking.github.io/DnDCharacterBuilder/specificCharacter.html?buildName="
+let domain = "https://lkbviking.github.io/DnDCharacterBuilder/specificCharacter.html?buildName="
 
 export class Character {
     constructor(buildName, mainClass, subClass, levels, 

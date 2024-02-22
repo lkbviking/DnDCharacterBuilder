@@ -11,5 +11,5 @@ export function sanitizeText(text) {
 }
 
 export function characterLink(character) {
-    return `<a href="specificCharacter.html?buildName=${character}">${character}</a>`;
+    return `<a href="specificCharacter.html?buildName=${sanitizeText(character)}">${character}</a>`;
 }
