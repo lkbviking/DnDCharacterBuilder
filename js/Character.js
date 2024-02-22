@@ -276,6 +276,11 @@ export class CharacterBuilder {
             this.mainClassGameplayDescription,
             this.multiClassGameplayDescription,
             this.multiClassSubClassGameplayDescription,
+            this.feats,
+            this.race,
+            this.attributes,
+            this.background,
+            this.items,
             this.otherNotes,
             this.affinityVectors
         );
