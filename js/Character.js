@@ -128,7 +128,7 @@ export class CharacterBuilder {
         this.hasPlaytestMaterial = false;
         this.hasHomebrewMaterial = false;
         this.statsArray = '';
-        this.recommendedSpells = [['PYF']];
+        this.recommendedSpells = [['PYF'],[],[],[],[],[],[],[],[],[]];
         this.recommendedSpellsNotes = '';
         this.narritiveDescription = '';
         this.mainClassGameplayDescription = '';
