@@ -1,4 +1,8 @@
 import { AffinityVector } from './AffinityVector.js';
+import { potentialCharacters } from './Metadata/potentialCharacters.js';
+import { sanitizeText, characterLink } from './links.js';
+domain = "https://lkbviking.github.io/DnDCharacterBuilder/specificCharacter.html?buildName="
+
 export class Character {
     constructor(buildName, mainClass, subClass, levels, 
         multiClass, multiClassSubClass, multiClassLevels, 
@@ -7,7 +11,7 @@ export class Character {
         narritiveDescription, mainClassGameplayDescription, 
         multiClassGameplayDescription, multiClassSubClassGameplayDescription,
         feats, race, attributes, background, items,
-        otherNotes, affinityVectors) {
+        otherNotes, affinityVectors, affinityRating, url) {
         this.buildName = buildName;
         this.mainClass = mainClass;
         this.subClass = subClass;
@@ -31,6 +35,8 @@ export class Character {
         this.items = items;
         this.otherNotes = otherNotes;
         this.affinityVectors = affinityVectors;
+        this.affinityRating = affinityRating;
+        this.url = domain + sanitizeText(buildName);
         if (this.hasHomebrewMaterial) {
             this.affinityVectors.push(new AffinityVector('HOMEBREW', 5));
         } else {
@@ -110,6 +116,12 @@ export class Character {
         html += '<p>Tyler has approved using 6e\'s buff to Healing Word/Cure Wounds (and their "Mass" counterparts) that doubles the amount of dice you roll for those spells.</p>';
         html += '<p>Aid + Heroes\' Feast + Feature: Inspiring Leader is an insane combo.</p>';
 
+        html += '<h1>Not for you? Here are some other character suggestions:</h1>';
+        for (let i = 0; i < 6; i++) {
+            if (potentialCharacters[i].buildName !== this.buildName) {
+                html += '<p>' + characterLink(potentialCharacters[i].buildName) + '</p>';
+            }
+        }
 
         html += '</div>';
         return html;
@@ -141,6 +153,8 @@ export class CharacterBuilder {
         this.items = [];
         this.otherNotes = '';
         this.affinityVectors = [];
+        this.affinityRating = 0;
+        this.url = '';
     }
 
     setBuildName(buildName) {
@@ -258,6 +272,16 @@ export class CharacterBuilder {
         return this;
     }
 
+    setAffinityRating(affinityRating) {
+        this.affinityRating = affinityRating;
+        return this;
+    }
+
+    setUrl(url) {
+        this.url = url;
+        return this;
+    }
+
     build() {
         return new Character(
             this.buildName,
@@ -282,7 +306,9 @@ export class CharacterBuilder {
             this.background,
             this.items,
             this.otherNotes,
-            this.affinityVectors
+            this.affinityVectors,
+            this.affinityRating,
+            this.url
         );
     }
 }

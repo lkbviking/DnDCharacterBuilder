@@ -346,7 +346,7 @@ potentialCharacters.push(
     .setMultiClassGameplayDescription('')
     .setMultiClassSubClassGameplayDescription('')
     .setFeats('Gift of the Gem Dragon (or any WIS half-feat) and +2 WIS for your first two gets you to 20 WIS. For your third ASI I recommend Tough although proficiency for CON saves through a feat will cut down on how often you are recasting your concentration spells. Note the focus on HP and CON is so that you can cast all of your healing spells on allies and slowly heal yourself up through the contstant self healing from Blessed Healer.')
-    .setRace('Tasha\'s Custom Lineage - +2 WIS and the Inspiring Leader feat.')
+    .setRace('Tasha\'s Custom Lineage: +2 WIS and the Inspiring Leader feat.')
     .setAttributes('STR: 8, DEX: 14, CON: 8, INT: 12, WIS: 17, CHA: 14')
     .setBackground('')
     .setMagicItemsByTier(0, item('Candle of Invocation'))

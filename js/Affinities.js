@@ -38,8 +38,6 @@ export class Affinities {
     }
 
     findCharacter() {
-        let bestCharacterRating = Number.MAX_SAFE_INTEGER;
-        let bestCharacter = null;
         let currentRating = 0;
         let characterAffinities = null;
         potentialCharacters.forEach((character) => {
@@ -52,12 +50,10 @@ export class Affinities {
                                     - characterAffinities.getAffinityVector(key).magnitude
                                  ) * this.getAffinityVector(key).polarization;
             });
-            if (currentRating < bestCharacterRating) {
-                bestCharacterRating = currentRating;
-                bestCharacter = character;
-            }
+            character.affinityRating = currentRating;
             console.log(character.buildName + ': ' + currentRating);
         });
-        return bestCharacter;
+        potentialCharacters.sort((a, b) => a.affinityRating - b.affinityRating);
+        return potentialCharacters[0];
     }
 }

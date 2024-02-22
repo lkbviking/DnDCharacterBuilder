@@ -6,6 +6,10 @@ export function spell(text) {
     return `<a href="http://dnd5e.wikidot.com/spell:${sanitizeText(text)}">${text}</a>`;
 }
 
-function sanitizeText(text) {
+export function sanitizeText(text) {
     return text.replace(/[',+]/g, '').replace(/ /g, '-').toLowerCase();
+}
+
+export function characterLink(character) {
+    return `<a href="specificCharacter.html?buildName=${character}">${character}</a>`;
 }
