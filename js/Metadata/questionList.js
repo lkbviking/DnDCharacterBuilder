@@ -30,7 +30,7 @@ export let supportList = [];
 */
 
 /* Support
-    Buff/Debuff/healing/shielding/saves 10, 10 = 25
+    Buff/Debuff/healing/shielding/saves 20, 15
 */
 questionList.push(
     new Question(
@@ -159,7 +159,7 @@ questionList.push(
         new Answer('Block it with my armor/shield', new AffinityVector('STALWART', 5, 5), new AffinityVector('DEFENCE', 2, 2)),
         new Answer('Magical protection', new AffinityVector('FIELD', 5, 5), new AffinityVector('DEFENCE', 2, 2)),
         new Answer('Defense is lame, I make up for being squishy with raw power.', new AffinityVector('DEFENCE', -2, 2)),
-        new Answer('Defense is critical but they type of defense is unimportant.', new AffinityVector('DEFENCE', 2, 2))
+        new Answer('Defense is critical but the type of defense is unimportant.', new AffinityVector('DEFENCE', 2, 2))
     )
 );
 
@@ -213,6 +213,15 @@ questionList.push(
         new Answer('Cast Haste on myself for the extra damage every turn.', new AffinityVector('NOVA', -5, 5))
     )
 );
+
+questionList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'How do you prefer to influence an encounter?',
+        new Answer('By exerting my influence on as many targets as possible.', new AffinityVector('AOE', 5, 5)),
+        new Answer('By bringing all my power and focus to bear on a single target.', new AffinityVector('ST', 5, 5))
+    )
+);
 /*
 questionList.push(
     new Question(
@@ -236,6 +245,15 @@ tankList.push(
     )
 );
 
+tankList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'The enemy has concentrated all of their forces on you and you are surrounded by hostiles. What is the best course of action?',
+        new Answer('Cleave all the enemies down while they are grouped up.', new AffinityVector('AOE', 5, 5)),
+        new Answer('Focus each enemy one at a time until they are all eliminated.', new AffinityVector('ST', 5, 5))
+    )
+);
+
 meleeList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
@@ -245,6 +263,15 @@ meleeList.push(
         new Answer('Aid your allies.', new AffinityVector('SUPPORT', 5, 5)),
         new Answer('Protect yourself', new AffinityVector('TANK', 5, 5)),
         new Answer('Dash into melee range and use a bonus action melee attack.', new AffinityVector('MELEE_DPS', 5, 5))
+    )
+);
+
+meleeList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'You are trapped between four enemies. One heavily armored evil knight and a group of three bandits. Which do you attack first?',
+        new Answer('Use my skill to quickly overpower the bandits.', new AffinityVector('AOE', 5, 5)),
+        new Answer('Focus first on the most threatening target, the knight.', new AffinityVector('ST', 5, 5))
     )
 );
 
@@ -260,6 +287,15 @@ rangedList.push(
     )
 );
 
+rangedList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'From your Snipers\' nest you see your allies engaged with a monstrosity but unbeknownst to them, several smaller enemies approach from your allies\' flank. You warn your allies and begin to line up a shot. Which enemy is in your crosshairs?',
+        new Answer('The small flankers. I need to kill or weaken as many as I can before they reach my allies, who already have their hands full.', new AffinityVector('AOE', 5, 5)),
+        new Answer('The monstrosity. If it can be eliminated the flankers will be easy to clean up.', new AffinityVector('ST', 5, 5))
+    )
+);
+
 casterList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
@@ -269,6 +305,15 @@ casterList.push(
         new Answer('Use a spell slot to heal, protect, or buff the ally in the most danger.', new AffinityVector('SUPPORT', 5, 5)),
         new Answer('Use a ranged weapon attack.', new AffinityVector('RANGED_DPS', 5, 5)),
         new Answer('Heal or protect myself.', new AffinityVector('TANK', 5, 5))
+    )
+);
+
+casterList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'You are about to fight your group\'s arch nemesis. However, first you must dispatch his minions. You are a 5th level adventurer and have a scroll of fireball, when do you use it?',
+        new Answer('It would be best used now, on the minions.', new AffinityVector('AOE', 5, 5)),
+        new Answer('Save it for our nemesis. A 3rd level spell slot is too valuable to waste on minions.', new AffinityVector('ST', 5, 5))
     )
 );
 
@@ -303,7 +348,7 @@ supportList.push(
         'What is the best early support spell?',
         new Answer('Cure Wounds', new AffinityVector('HEAL', 5, 5)),
         new Answer('Bless', new AffinityVector('BUFF', 5, 5)),
-        new Answer('Any or all of the above.', new AffinityVector('HEAL', 0, 0))
+        new Answer('Any or all of the above.', new AffinityVector('HEAL', 2, 2),new AffinityVector('BUFF', 2, 2))
     )
 );
 
@@ -313,7 +358,7 @@ supportList.push(
         'What is the best early support spell?',
         new Answer('Shield of Faith', new AffinityVector('SHIELD', 5, 5)),
         new Answer('Bane', new AffinityVector('DEBUFF', 5, 5)),
-        new Answer('Any or all of the above.', new AffinityVector('HEAL', 0, 0))
+        new Answer('Any or all of the above.', new AffinityVector('SHIELD', 2, 2),new AffinityVector('DEBUFF', 2, 2))
     )
 );
 
@@ -323,7 +368,7 @@ supportList.push(
         'What is the best feature/spell?',
         new Answer('Aura of Protection.', new AffinityVector('SAVE', 5, 5)),
         new Answer('Haste.', new AffinityVector('BUFF', 5, 5)),
-        new Answer('Any or all of the above.', new AffinityVector('HEAL', 0, 0))
+        new Answer('Any or all of the above.', new AffinityVector('SAVE', 2, 2),new AffinityVector('BUFF', 2, 2))
     )
 );
 
@@ -333,7 +378,7 @@ supportList.push(
         'Which would you pick if you could permanently give your whole party one of the following effects?',
         new Answer('Evasion.', new AffinityVector('SAVE', 5, 5)),
         new Answer('+3 AC', new AffinityVector('SHIELD', 5, 5)),
-        new Answer('Any or all of the above.', new AffinityVector('HEAL', 0, 0))
+        new Answer('Any or all of the above.', new AffinityVector('SAVE', 2, 2),new AffinityVector('SHIELD', 2, 2))
     )
 );
 
@@ -343,6 +388,27 @@ supportList.push(
         'What is the better spell?',
         new Answer('Healing Word.', new AffinityVector('HEAL', 5, 5)),
         new Answer('Faerie Fire.', new AffinityVector('DEBUFF', 5, 5)),
-        new Answer('Any or all of the above.', new AffinityVector('HEAL', 0, 0))
+        new Answer('Any or all of the above.', new AffinityVector('HEAL', 2, 2), new AffinityVector('DEBUFF', 2, 2))
+    )
+);
+
+supportList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE_CHECKBOXES,
+        'What piece(s) make up a truely great support?',
+        new Answer('Their ability to heal damaged allies.', new AffinityVector('HEAL', 10, 5)),
+        new Answer('Their ability to prevent allies from taking damage.', new AffinityVector('SHIELD', 10, 5)),
+        new Answer('Their ability to protect/cure allies from harmful spell effects.', new AffinityVector('SAVE', 10, 5)),
+        new Answer('Their ability to buff allies.', new AffinityVector('BUFF', 10, 5)),
+        new Answer('Their ability to debuff enemies.', new AffinityVector('DEBUFF', 10, 5)),
+    )
+);
+
+supportList.push(
+    new Question(
+        QuestionType.MULTIPLE_CHOICE,
+        'What type of support is best?',
+        new Answer('Concentrated support helping whoever needs it most (or whoever you like most).', new AffinityVector('ST', 5, 5)),
+        new Answer('Blanket support that is spread across the battlefield.', new AffinityVector('AOE', 5, 5))
     )
 );

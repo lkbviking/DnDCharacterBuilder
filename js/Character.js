@@ -3,9 +3,10 @@ export class Character {
     constructor(buildName, mainClass, subClass, levels, 
         multiClass, multiClassSubClass, multiClassLevels, 
         hasPlaytestMaterial, hasHomebrewMaterial,
-        statsArray, recommendedSpells,
+        statsArray, recommendedSpells, recommendedSpellsNotes,
         narritiveDescription, mainClassGameplayDescription, 
         multiClassGameplayDescription, multiClassSubClassGameplayDescription,
+        feats, race, attributes, background, items,
         otherNotes, affinityVectors) {
         this.buildName = buildName;
         this.mainClass = mainClass;
@@ -18,10 +19,16 @@ export class Character {
         this.hasHomebrewMaterial = hasHomebrewMaterial;
         this.statsArray = statsArray;
         this.recommendedSpells = recommendedSpells;
+        this.recommendedSpellsNotes = recommendedSpellsNotes;
         this.narritiveDescription = narritiveDescription;
         this.mainClassGameplayDescription = mainClassGameplayDescription;
         this.multiClassGameplayDescription = multiClassGameplayDescription;
         this.multiClassSubClassGameplayDescription = multiClassSubClassGameplayDescription;
+        this.feats = feats;
+        this.race = race;
+        this.attributes = attributes;
+        this.background = background;
+        this.items = items;
         this.otherNotes = otherNotes;
         this.affinityVectors = affinityVectors;
         if (this.hasHomebrewMaterial) {
@@ -80,11 +87,29 @@ export class Character {
                     html += '<p>' + this.recommendedSpells[i][j] + '</p>';
                 }
             }
+            html += '<h2>Spells Notes:</h2>';
+            html += '<p>' + 'These recommended spells do not account for the total amount of spells you can have prepared so you may pick a few of your favorite spells and add them to the list.' + '</p>';
+            html += '<p>' + this.recommendedSpellsNotes + '</p>';
         }
+        html += '<h1>Race</h1>';
+        html += '<p>' + this.race + '</p>';
+        html += '<h1>Attributes (including racial bonuses)</h1>';
+        html += '<p>' + this.attributes + '</p>';
+        html += '<h1>Feats/ASI</h1>';
+        html += '<p>' + this.feats + '</p>';
+        html += '<h1>Background</h1>';
+        html += '<p>' + this.background + '</p>';
+        html += '<h1>Magic Items</h1>';
+        html += '<p>Very Rare: ' + this.items[0] + '</p>';
+        html += '<p>Rare: ' + this.items[1] + '</p>';
+        html += '<p>Uncommon: ' + this.items[2] + '</p>';
+        html += '<h1>Other Notes</h1>';
         if (this.otherNotes) {
-            html += '<h1>Other Notes</h1>';
             html += '<p>' + this.otherNotes + '</p>';
         }
+        html += '<p>Tyler has approved using 6e\'s buff to Healing Word/Cure Wounds (and their "Mass" counterparts) that doubles the amount of dice you roll for those spells.</p>';
+        html += '<p>Aid + Heroes\' Feast + Feature: Inspiring Leader is an insane combo.</p>';
+
 
         html += '</div>';
         return html;
@@ -103,11 +128,17 @@ export class CharacterBuilder {
         this.hasPlaytestMaterial = false;
         this.hasHomebrewMaterial = false;
         this.statsArray = '';
-        this.recommendedSpells = [];
+        this.recommendedSpells = [['PYF']];
+        this.recommendedSpellsNotes = '';
         this.narritiveDescription = '';
         this.mainClassGameplayDescription = '';
         this.multiClassGameplayDescription = '';
         this.multiClassSubClassGameplayDescription = '';
+        this.feats = '';
+        this.race = '';
+        this.attributes = '';
+        this.background = '';
+        this.items = [];
         this.otherNotes = '';
         this.affinityVectors = [];
     }
@@ -167,6 +198,11 @@ export class CharacterBuilder {
         return this;
     }
 
+    setRecommendedSpellsNotes(recommendedSpellsNotes) {
+        this.recommendedSpellsNotes = recommendedSpellsNotes;
+        return this;
+    }
+
     setNarritiveDescription(narritiveDescription) {
         this.narritiveDescription = narritiveDescription;
         return this;
@@ -184,6 +220,31 @@ export class CharacterBuilder {
 
     setMultiClassSubClassGameplayDescription(multiClassSubClassGameplayDescription) {
         this.multiClassSubClassGameplayDescription = multiClassSubClassGameplayDescription;
+        return this;
+    }
+
+    setFeats(feats) {
+        this.feats = feats;
+        return this;
+    }
+
+    setRace(race) {
+        this.race = race;
+        return this;
+    }
+
+    setAttributes(attributes) {
+        this.attributes = attributes;
+        return this;
+    }
+
+    setBackground(background) {
+        this.background = background;
+        return this;
+    }
+
+    setMagicItemsByTier(tier, item) {
+        this.items[tier] = item;
         return this;
     }
 
@@ -210,6 +271,7 @@ export class CharacterBuilder {
             this.hasHomebrewMaterial,
             this.statsArray, 
             this.recommendedSpells,
+            this.recommendedSpellsNotes,
             this.narritiveDescription,
             this.mainClassGameplayDescription,
             this.multiClassGameplayDescription,
