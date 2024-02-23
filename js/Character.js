@@ -1,6 +1,6 @@
 import { AffinityVector } from './AffinityVector.js';
 import { potentialCharacters } from './Metadata/potentialCharacters.js';
-import { sanitizeText, characterLink } from './links.js';
+import { sanitizeText, characterLink, spell } from './links.js';
 let domain = "https://lkbviking.github.io/DnDCharacterBuilder/specificCharacter.html?buildName="
 
 export class Character {
@@ -8,7 +8,7 @@ export class Character {
         multiClass, multiClassSubClass, multiClassLevels, 
         hasPlaytestMaterial, hasHomebrewMaterial,
         statsArray, recommendedSpells, recommendedSpellsNotes,
-        narritiveDescription, mainClassGameplayDescription, 
+        narritiveDescription, buildDraw, mainClassGameplayDescription, 
         multiClassGameplayDescription, multiClassSubClassGameplayDescription,
         feats, race, attributes, background, items,
         otherNotes, affinityVectors, affinityRating, url) {
@@ -25,6 +25,7 @@ export class Character {
         this.recommendedSpells = recommendedSpells;
         this.recommendedSpellsNotes = recommendedSpellsNotes;
         this.narritiveDescription = narritiveDescription;
+        this.buildDraw = buildDraw;
         this.mainClassGameplayDescription = mainClassGameplayDescription;
         this.multiClassGameplayDescription = multiClassGameplayDescription;
         this.multiClassSubClassGameplayDescription = multiClassSubClassGameplayDescription;
@@ -56,12 +57,15 @@ export class Character {
     getCharacterHTML() {
         let html = '<div class="character">';
         html += '<h1>Your Build is ' + this.buildName + '</h1>';
+        html += '<p>' + this.buildDraw + '</p>';
         if (this.hasPlaytestMaterial) {
             html += '<p>Using the cool new stuff from the playtest/6e...</p>';
         }
         if (this.hasHomebrewMaterial) {
             html += '<p>Using some homebrew stuff...</p>';
         }
+        html += '<h1>Narrative Description</h1>';
+        html += '<p>' + this.narritiveDescription + '</p>';
         html += '<h1>Character</h1>';
         html += '<p>You should be a... ' + this.mainClass + '!</p>';
         html += '<p>With a subclass of ' + this.subClass + '!</p>';
@@ -73,28 +77,26 @@ export class Character {
         } else {
             html += '<p>For all ' + this.levels + ' levels!</p>';
         }
-        html += '<h1>Narrative Description</h1>';
-        html += '<p>' + this.narritiveDescription + '</p>';
         html += '<h1>Here is a short description of what you can do:</h1>';
         html += '<p>' + this.mainClassGameplayDescription + '</p>';
         if (this.multiClassLevels > 0) {
             html += '<p>' + this.multiClassGameplayDescription + '</p>';
             html += '<p>' + this.multiClassSubClassGameplayDescription + '</p>';
         }
-        if (this.recommendedSpells.length > 0) {
-            html += '<h1>Recommended Spells</h1>';
+        if (this.recommendedSpellsNotes) {
+            html += '<h1>Core Spells</h1>';
             html += '<h2>Cantrips:</h2>';
             for (let j = 0; j < this.recommendedSpells[0].length; j++) {
-                html += '<p>' + this.recommendedSpells[0][j] + '</p>';
+                html += '<p>' + spell(this.recommendedSpells[0][j]) + '</p>';
             }
             for (let i = 1; i < this.recommendedSpells.length; i++) {
-                html += '<h2>Tier ' + i + ':</h2>';
+                if(this.recommendedSpells[i].length) html += '<h2>Tier ' + i + ':</h2>';
                 for (let j = 0; j < this.recommendedSpells[i].length; j++) {
-                    html += '<p>' + this.recommendedSpells[i][j] + '</p>';
+                    html += '<p>' + spell(this.recommendedSpells[i][j]) + '</p>';
                 }
             }
+            html += '<p>*-Indicates this spell is core but given to you for free and does not count against the number of spells you can prepare.</p>';
             html += '<h2>Spells Notes:</h2>';
-            html += '<p>' + 'These recommended spells do not account for the total amount of spells you can have prepared so you may pick a few of your favorite spells and add them to the list.' + '</p>';
             html += '<p>' + this.recommendedSpellsNotes + '</p>';
         }
         html += '<h1>Race</h1>';
@@ -103,7 +105,7 @@ export class Character {
         html += '<p>' + this.attributes + '</p>';
         html += '<h1>Feats/ASI</h1>';
         html += '<p>' + this.feats + '</p>';
-        html += '<h1>Background</h1>';
+        html += '<h1>Potential Backstory</h1>';
         html += '<p>' + this.background + '</p>';
         html += '<h1>Magic Items</h1>';
         html += '<p>Very Rare: ' + this.items[0] + '</p>';
@@ -115,6 +117,7 @@ export class Character {
         }
         html += '<p>Tyler has approved using 6e\'s buff to Healing Word/Cure Wounds (and their "Mass" counterparts) that doubles the amount of dice you roll for those spells.</p>';
         html += '<p>Aid + Heroes\' Feast + Feature: Inspiring Leader is an insane combo.</p>';
+        html += '<p>Many suppors recommend lesser/greater restoration which can be very valuable but also is very niche, these are good candidates to swap out if you want to pick up something else.</p>';
 
         html += '<h1>Not for you? Here are some other character suggestions:</h1>';
         for (let i = 0; i < 6; i++) {
@@ -123,6 +126,7 @@ export class Character {
             }
         }
 
+        html += '<a href="index.html"><button id="restart">Take the Quiz Again</button></a>';
         html += '</div>';
         return html;
     };
@@ -141,8 +145,9 @@ export class CharacterBuilder {
         this.hasHomebrewMaterial = false;
         this.statsArray = '';
         this.recommendedSpells = [['PYF'],[],[],[],[],[],[],[],[],[]];
-        this.recommendedSpellsNotes = '';
+        this.recommendedSpellsNotes = 'None';
         this.narritiveDescription = '';
+        this.buildDraw = '';
         this.mainClassGameplayDescription = '';
         this.multiClassGameplayDescription = '';
         this.multiClassSubClassGameplayDescription = '';
@@ -222,6 +227,11 @@ export class CharacterBuilder {
         return this;
     }
 
+    setBuildDraw(buildDraw) {
+        this.buildDraw = buildDraw;
+        return this;
+    }
+
     setMainClassGameplayDescription(mainClassGameplayDescription) {
         this.mainClassGameplayDescription = mainClassGameplayDescription;
         return this;
@@ -297,6 +307,7 @@ export class CharacterBuilder {
             this.recommendedSpells,
             this.recommendedSpellsNotes,
             this.narritiveDescription,
+            this.buildDraw,
             this.mainClassGameplayDescription,
             this.multiClassGameplayDescription,
             this.multiClassSubClassGameplayDescription,

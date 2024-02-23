@@ -7,7 +7,12 @@ export function spell(text) {
 }
 
 export function sanitizeText(text) {
-    return text.replace(/[',+]/g, '').replace(/ /g, '-').toLowerCase();
+    let index = text.indexOf('-')
+    if (index !== -1) {
+        text = text.substring(0, index-1);
+    }
+
+    return text.replace(/[',+*^]/g, '').replace(/ /g, '-').toLowerCase();
 }
 
 export function characterLink(character) {

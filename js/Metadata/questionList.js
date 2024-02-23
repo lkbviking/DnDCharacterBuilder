@@ -208,7 +208,7 @@ questionList.push(
 questionList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
-        'If you were an Arcane Archer with one 3rd level spell slot left in the midst of a difficult encounter, what would you do?',
+        'You are playing a damage focused martial/caster hybrid with one 3rd level spell slot left in the midst of a difficult encounter, what would you do?',
         new Answer('Cast Fireball for damage now.', new AffinityVector('NOVA', 5, 5)),
         new Answer('Cast Haste on myself for the extra damage every turn.', new AffinityVector('NOVA', -5, 5))
     )
