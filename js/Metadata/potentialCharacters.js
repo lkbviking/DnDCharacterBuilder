@@ -152,7 +152,7 @@ potentialCharacters.push(
     .setMagicItemsByTier(0, item('Candle of Invocation'))
     .setMagicItemsByTier(1, item('Amulet of Health'))
     .setMagicItemsByTier(2, item('Mithral Armor') + '(plate) AND ' + item('Moon Sickle'))
-    .setRecommendedSpellsByTier(0, ['Guidance*']) // 11 15 - 4 5
+     // 11 15 - 4 5
     .setRecommendedSpellsByTier(1, ['Guiding Bolt*', 'Bless*', 'Cure Wounds*', 'Goodberry', 'Healing Word', 'Inflict Wounds']) // 2 1
     .setRecommendedSpellsByTier(2, ['Lesser Restoration*', 'Spiritual Weapon*', 'Aid', 'Silence', 'Healing Spirit']) // 2 1
     .setRecommendedSpellsByTier(3, ['Beacon of Hope*', 'Revivify*'])
@@ -209,7 +209,7 @@ potentialCharacters.push(
     .setMagicItemsByTier(0, item('Candle of Invocation'))
     .setMagicItemsByTier(1, item('Staff of Healing'))
     .setMagicItemsByTier(2, item('Mithral Armor') + item('Moon Sickle'))
-    .setRecommendedSpellsByTier(0, ['Guidance*']) // 11 15 - 7 8
+     // 11 15 - 7 8
     .setRecommendedSpellsByTier(1, ['Faerie Fire*', 'Guiding Bolt*', 'Goodberry', 'Healing Word', 'Bless', 'Inflict Wounds', 'Cure Wounds']) // 2 3
     .setRecommendedSpellsByTier(2, ['Aid', 'Lesser Restoration', 'Silence', 'Spiritual Weapon', 'Healing Spirit']) // 3 2
     .setRecommendedSpellsByTier(3, ['Aura of Vitality*', 'Leomund\'s Tiny Hut*', 'Beacon of Hope', 'Mass Healing Word', 'Revivify', 'Dispel Magic']) // 2 2
