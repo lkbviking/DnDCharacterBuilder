@@ -213,7 +213,7 @@ export class CharacterBuilder {
     }
 
     setRecommendedSpellsByTier(tier, recommendedSpells) {
-        this.recommendedSpells[tier].push(recommendedSpells);
+        this.recommendedSpells[tier].push(...recommendedSpells);
         return this;
     }
 
