@@ -7,6 +7,9 @@ export function spell(text) {
 }
 
 export function sanitizeText(text) {
+    if (text === undefined || text === null || text === '') {
+        return '';
+    }
     let index = text.indexOf('-')
     if (index !== -1) {
         text = text.substring(0, index-1);
