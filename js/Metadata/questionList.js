@@ -237,11 +237,11 @@ tankList.push(
     new Question(
         QuestionType.MULTIPLE_CHOICE,
         'It is the middle of a difficult combat. The closest enemy is 60ft away. What would you like to do?',
-        new Answer('', new AffinityVector('CASTER_DPS', 5, 5)),
-        new Answer('', new AffinityVector('RANGED_DPS', 5, 5)),
-        new Answer('', new AffinityVector('SUPPORT', 5, 5)),
-        new Answer('', new AffinityVector('TANK', 5, 5)),
-        new Answer('', new AffinityVector('MELEE_DPS', 5, 5))
+        new Answer('Cast a Spell', new AffinityVector('CASTER_DPS', 5, 5)),
+        new Answer('Shoot a ranged weapon attack', new AffinityVector('RANGED_DPS', 5, 5)),
+        new Answer('Protect an Ally', new AffinityVector('SUPPORT', 5, 5)),
+        new Answer('Shore up your defences or taunt the enemy.', new AffinityVector('TANK', 5, 5)),
+        new Answer('Dash in for a bonus action melee attack.', new AffinityVector('MELEE_DPS', 5, 5))
     )
 );
 
